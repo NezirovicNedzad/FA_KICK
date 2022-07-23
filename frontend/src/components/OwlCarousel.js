@@ -81,7 +81,7 @@ const{userInfo}=userLogin
   <div className="redovi">
    {camps.map(camp => (
 <div key={camp._id} style={{maxWidth:"33%"}} className="kol32">
-<Kartica  camps={camp}/>
+<Kartica   camps={camp}/>
 </div>
 ))}
   </div>

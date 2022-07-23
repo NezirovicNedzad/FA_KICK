@@ -31,7 +31,7 @@ const CarouselZaKampove = () => {
       {camps.map( kamp=>(
 
 loading ? <Loader></Loader> : error ? <Message variant="danger">{error}</Message> :
-<Carousel.Item key={kamp._id}>
+<Carousel.Item name='camps' key={kamp._id}>
 <img
   className="d-block w-100 fluid"
   src={kamp.slika}
@@ -42,7 +42,7 @@ loading ? <Loader></Loader> : error ? <Message variant="danger">{error}</Message
   <h3>{kamp.opis}</h3>
   
   <h5 style={{color:"white",marginBottom:"2rem"}}>Upoznajte se detaljnije sa radom ovog kamp-a! </h5>
-  <Link to={`/kamp/${kamp._id}`} style={{color:"white",textDecoration:"none"}}  className='dodaj'>
+  <Link to={`/kamp/${kamp._id}`}  style={{color:"white",textDecoration:"none"}} name={kamp.tip} className='dodaj'>
        Pogledaj
   </Link>
 </Carousel.Caption>

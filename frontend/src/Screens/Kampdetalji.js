@@ -91,68 +91,75 @@ useEffect (()=>{
 
 const prijavi =()=>{
 
-   if(!userInfo)
-   {
-          navigate(`/login?redirect=${redirect}`)     
-   }
-   else if(userInfo.isAdmin || userInfo.isKordinator)
-   {
-        var btn1=document.getElementById('btn1')
 
-        btn1.style.display="none"
+  if(window.confirm("Jeste li sigurni da zelite da se prijavite na ovaj kamp?"))
+    {
+      if(!userInfo)
+      {
+             navigate(`/login?redirect=${redirect}`)     
+      }
+      else if(userInfo.isAdmin || userInfo.isKordinator)
+      {
+           var btn1=document.getElementById('btn1')
    
-   }
-
-
-
-   else if(camp.tip==="Letnji kamp")
-   {
-     console.log(count)
-     if(count>letnji)
-     {
-      setMessage(<p><p>Oprostite,sva mesta na ovom letnjem kampu su zauzeta!Naš maksimalni kapacitet od 35 mesta na kampu je popunjen.</p><p>Nađite mesta na nekom drugom kampu <Link style={{color:"red",textDecoration:"display"}} to="/kampovi">ovde</Link>! </p> </p>)
-     }
-     else 
-     {
-       
-      dispatch(prijavaKreiraj(kampId,kordinator,userInfo._id,ocene,slika,text,tip,datum_pocetka,datum_zavrsetka))
-     }
+           btn1.style.display="none"
+      
+      }
    
-
-   }
-   else if(camp.tip==="Dvonedeljni Kamp")
-   {
-     if(count>dvoneldeljni)
-     {
-      setMessage(<p><p>Oprostite,sva mesta na ovom dvonedeljnom  kampu su zauzeta!Naš maksimalni kapacitet od 40 mesta je popunjen.</p><p>Nađite mesta na nekom drugom kampu <Link style={{color:"red",textDecoration:"display"}} to="/kampovi">ovde</Link>! </p> </p>)
-     }
-     else 
-     {
-       
-      dispatch(prijavaKreiraj(kampId,kordinator,userInfo._id,ocene,slika,text,tip,datum_pocetka,datum_zavrsetka))
-     }
    
-
-   }
-   else if(camp.tip==="Full-time kamp")
-   {
-     if(count>fult)
-     {
-      setMessage(<p><p>Oprostite,sva mesta na ovom Full-time kampu su zauzeta!Naš maksimalni kapacitet od 22 mesta na kampu je popunjen.</p><p>Nađite mesta na nekom drugom kampu <Link style={{color:"red",textDecoration:"display"}} to="/kampovi">ovde</Link>! </p> </p>)
-     }
-     else 
-     {
-       
-      dispatch(prijavaKreiraj(kampId,kordinator,userInfo._id,ocene,slika,text,tip,datum_pocetka,datum_zavrsetka))
-     }
-
-   }
-   else{
-    setMessage(`Nepostojan kamp.`)
-
-   }
    
- 
+      else if(camp.tip==="Letnji kamp")
+      {
+        console.log(count)
+        if(count>letnji)
+        {
+         setMessage(<p><p>Oprostite,sva mesta na ovom letnjem kampu su zauzeta!Naš maksimalni kapacitet od 35 mesta na kampu je popunjen.</p><p>Nađite mesta na nekom drugom kampu <Link style={{color:"red",textDecoration:"display"}} to="/kampovi">ovde</Link>! </p> </p>)
+        }
+        else 
+        {
+          
+         dispatch(prijavaKreiraj(kampId,kordinator,userInfo._id,ocene,slika,text,tip,datum_pocetka,datum_zavrsetka))
+        }
+      
+   
+      }
+      else if(camp.tip==="Dvonedeljni Kamp")
+      {
+        if(count>dvoneldeljni)
+        {
+         setMessage(<p><p>Oprostite,sva mesta na ovom dvonedeljnom  kampu su zauzeta!Naš maksimalni kapacitet od 40 mesta je popunjen.</p><p>Nađite mesta na nekom drugom kampu <Link style={{color:"red",textDecoration:"display"}} to="/kampovi">ovde</Link>! </p> </p>)
+        }
+        else 
+        {
+          
+         dispatch(prijavaKreiraj(kampId,kordinator,userInfo._id,ocene,slika,text,tip,datum_pocetka,datum_zavrsetka))
+        }
+      
+   
+      }
+      else if(camp.tip==="Full-time kamp")
+      {
+        if(count>fult)
+        {
+         setMessage(<p><p>Oprostite,sva mesta na ovom Full-time kampu su zauzeta!Naš maksimalni kapacitet od 22 mesta na kampu je popunjen.</p><p>Nađite mesta na nekom drugom kampu <Link style={{color:"red",textDecoration:"display"}} to="/kampovi">ovde</Link>! </p> </p>)
+        }
+        else 
+        {
+          
+         dispatch(prijavaKreiraj(kampId,kordinator,userInfo._id,ocene,slika,text,tip,datum_pocetka,datum_zavrsetka))
+        }
+   
+      }
+      else{
+       setMessage(`Nepostojan kamp.`)
+   
+      }
+      
+    
+     
+    }
+
+  
 }
 
 

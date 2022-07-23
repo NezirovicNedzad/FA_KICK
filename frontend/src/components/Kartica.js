@@ -14,7 +14,7 @@ const Kartica = ({camps}) => {
         <img className="img-circle" src={camps.slika} alt="nesto" />
         </div>
         
-        <div className="imepreporuke"><Link to ={`/kamp/${camps._id}`} >{camps.tip}</Link></div>
+        <div className="imepreporuke"><Link name={camps.cena} to ={`/kamp/${camps._id}`} >{camps.tip}</Link></div>
         <p>
 
         {camps.opis}

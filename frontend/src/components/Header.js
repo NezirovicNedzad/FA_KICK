@@ -61,7 +61,7 @@ const logoutHandler=()=>{
             <Nav.Link >O NAMA</Nav.Link>
             </LinkContainer>
             <LinkContainer to='/kampovi'>
-            <Nav.Link >KAMPOVI</Nav.Link>
+            <Nav.Link  name ='kamp'>KAMPOVI</Nav.Link>
 
             </LinkContainer>
             <LinkContainer to='/objekti'>
@@ -69,7 +69,7 @@ const logoutHandler=()=>{
             </LinkContainer>
             {!userInfo  ? (
             <LinkContainer to='/login'>
-            <Nav.Link >PRIJAVI SE</Nav.Link>
+            <Nav.Link name='prijavi' >PRIJAVI SE</Nav.Link>
             </LinkContainer>) :
            !userInfo.verified ? (
             

@@ -65,6 +65,7 @@ const navigate =useNavigate()
                         <Form.Label>Email Adresa</Form.Label>
                         <Form.Control 
                         type='email'
+                        name='email'
                         placeholder='vas email..'
                         value={email}
                         onChange={(e)=>setEmail(e.target.value)} >
@@ -77,9 +78,10 @@ const navigate =useNavigate()
                         <Form.Label>Password</Form.Label>
                         <Form.Control type='password' placeholder='vas password..'
                         value={password}
+                        name='password'
                         onChange={(e)=>setPassword(e.target.value)} ></Form.Control>
                    </Form.Group>
-                    <Button className='dugme' type='submit'  >
+                    <Button className='dugme' type='submit' name='log' >
                         Prijavi se
                     </Button>
 
