@@ -1,10 +1,10 @@
 import React,{useEffect} from 'react';
 import { Col,Row,Table } from 'react-bootstrap';
-import BarChart from '../components/BarChart';
+
 import { listKordinatori,listKorisnicizaPrijave} from '../actions/korisnikaction';
 import {useSelector,useDispatch} from "react-redux"
 import {useNavigate,useParams} from "react-router-dom"
-import {prijavaDetails,listPrijave} from '../actions/prijaveactions'
+import {prijavaDetails,listPrijave, DeleteOcena} from '../actions/prijaveactions'
 import Loader from '../components/Loader'; 
 import Message from '../components/Message';
 import {prijavaKorisnciSvi} from '../actions/prijaveactions';
@@ -12,6 +12,11 @@ import './profil.css'
 import Korisnici from '../components/Korisnici';
 import { listKorisniciPrijave } from "../actions/korisnikaction"
 import Paginate from '../components/Paginate';
+import SliderOcena from '../components/SliderOcena';
+import { DeletePrijava,prijavaKampoviSvaki } from '../actions/prijaveactions';
+
+import { DELETE_OCENA_RESET } from '../constants/prijaveConstants';
+
 const PrijavaDetalji = () => {
 
 const dispatch=useDispatch()
@@ -35,10 +40,15 @@ const {loading,error,korisnici}=korisniciPrijave
 const prijavezaSvakiKamp = useSelector(state =>state.prijavasviKorisnici)
 const {prijave:prijaveKorisnici,page,pages}=prijavezaSvakiKamp
 
+
+
 const pageNumber=params.pageNumber
 const kampId=params.kampId
 
 
+const deletePrijava = useSelector(state => state.prijavaOceneDelete)
+
+const{success,loading:loadingDelete,error:errorDellete}=deletePrijava
 
 
 const navigate=useNavigate()
@@ -53,8 +63,16 @@ useEffect (()=>{
  dispatch(prijavaKorisnciSvi(kampId,pageNumber))
 
  dispatch(listKorisniciPrijave())
+ if(success)
+ {
+
+  setTimeout(() => dispatch({type:DELETE_OCENA_RESET}),3000)
+ }
+ 
+
+
   
-},[dispatch,params,navigate,pageNumber,kampId])
+},[dispatch,params,navigate,pageNumber,kampId,success])
 
 
 
@@ -85,37 +103,19 @@ useEffect (()=>{
           <p>Koordinator će unostiti ocene koje se odnose na napredak u tehničkim,taktičkim sposobnostima člana kampa kao i fizičkom spremom člana.Koordinator će
             ocene unostiti nakon svakog treninga i ocene će biti u rangu od 1-10.
           </p>
+          {userInfo.isKordinator ? <><p>Kao kordinator na ovom kampu imate mogućnost uklanjanja prethodno datih ocena,pritiskom da dugme u desnom uglu kartice za ocenu.</p></> : <></>}
           <p>Same ocene biće prikazane u sledećem delu:
           </p>
           <div>
 
-            <h5 style={{textAlign:"center"}}>Ocene</h5>
             
-            {prijava.ocene.length===0 && <Message>Trenutno nemate nijednu ocenu!</Message>}
+            
+            {prijava.ocene.length===0 ? <Message>Trenutno nemate nijednu ocenu!</Message> :
+             <SliderOcena prijava={prijava} error={error} loading={loading} success={success}/>}
 
            
 
-            {prijava.ocene.map(ocena=>
-              
-              
-              (<div key={ocena._id}>
-                <div className='prijava'  style={{border:"1px solid black"}}>
-              <div className="RED">
-
-              <div style={{justifyContent:"center",display:'flex',alignItems:"center"}} className='kol3' >
-             <BarChart tehnika={ocena.tehnika} taktika={ocena.taktika} fizika={ocena.fizika}/>
-             </div>
-             <div style={{textAlign:"center"}} className='kol3'>
-          
-              <p style={{margin:"1.2rem 0"}}><span className='name'>Komentar trenera:</span>{ocena.text}</p>
-              <p style={{margin:"1.2rem 0"}}><span className='name'>Trening održan:</span>{ocena.trening.substring(0,10)}</p>
-              <p style={{margin:"1.2rem 0"}}><span className='name'>Prosečna ocena:</span>{((ocena.tehnika+ocena.taktika+ocena.fizika)/3).toFixed(2)}</p>
-             </div>
-              
-              </div>
-              </div>
-              
-              </div>))}
+        
 
 
           </div>
@@ -136,102 +136,201 @@ useEffect (()=>{
             </Col>
             
 
-            <Col style={{padding:"1.4rem"}} lg={4} >
+            {userInfo.isKordinator===true ? <>
+            
+              <Col style={{padding:"1.4rem"}} lg={4} >
            
 
- {kordinatori.map(kordinator=>(
-    
-  kordinator._id===prijava.koordinatorId ?
- <div key={kordinator._id}>
- 
-  <Korisnici key={kordinator._id}   kordinatori={kordinator} />
-
-  <h5 style={{textAlign:"center"}}>Lista svih članova kampa</h5>
-  {loading ? <Loader/> : error ? <Message variant='danger'>{error}</Message> :(
-
-
-<Table  striped bordered hover responsive className='table-sm'>
-
-
-    <thead>
-        <tr>
-            <th>Ime</th>
-            <th>Pozicija</th>
-            <th>Godine</th>
-          {userInfo.isKordinator ? <th></th> : <></>}  
-
-
-        </tr>
-    </thead>
-
-    <tbody>
-
-        {
-        
-        prijaveKorisnici.map(prijavice=>
-             
-         
-
+           {kordinatori.map(kordinator=>(
+              
+            kordinator._id===prijava.koordinatorId ?
+           <div key={kordinator._id}>
            
-            korisnici.map(korisnik=>(
-
-                korisnik._id===prijavice.korisnikId &&    
-              <tr key={korisnik._id}>
-                
-                  <td>{korisnik.ime}</td>
-                  <td>{korisnik.pozicija}</td>
-                  <td>{korisnik.brgod}</td>
-              
-              
-                 
-              
-              
-              
+          
+          
+            <h5 style={{textAlign:"center"}}>Lista svih članova kampa</h5>
+            {loading ? <Loader/> : error ? <Message variant='danger'>{error}</Message> :(
+          
+          
+          <Table  striped bordered hover responsive className='table-sm'>
+          
+          
+              <thead>
+                  <tr>
+                      <th>Ime</th>
+                      <th>Pozicija</th>
+                      <th>Godine</th>
+                    
+          
+          
+                  </tr>
+              </thead>
+          
+              <tbody>
+          
+                  {
                   
-              
-              
+                  prijaveKorisnici.map(prijavice=>
+                       
+                   
+          
+                     
+                      korisnici.map(korisnik=>(
+          
+                          korisnik._id===prijavice.korisnikId &&    
+                        <tr key={korisnik._id}>
+                          
+                            <td>{korisnik.ime}</td>
+                            <td>{korisnik.pozicija}</td>
+                            <td>{korisnik.brgod}</td>
+                        
+                        
+                           
+                        
+                        
+                        
+                            
+                        
+                        
+                            
+                        </tr>
+                        
+                                ))
+          
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    )
                   
-              </tr>
+                  
+                  
+                  
+           }
+              </tbody>
+          </Table>
+          
+          
+          
+          
+          )}
+          
+          
+          <Paginate page={page} pages={pages} link={`/profil/prijave/${params.id}/${kampId}/page/`}/>
+          
+          
+            </div>
+          
+            
+            : <div key={kordinator._id}></div>
+           
+           
+            
+            ))}
+          
+                        </Col>
+            
+            
+            </> : <Col style={{padding:"1.4rem"}} lg={4} >
+           
+
+           {kordinatori.map(kordinator=>(
               
-                      ))
-
+            kordinator._id===prijava.koordinatorId ?
+           <div key={kordinator._id}>
+           
+            <Korisnici key={kordinator._id}   kordinatori={kordinator} />
+          
+            <h5 style={{textAlign:"center"}}>Lista svih članova kampa</h5>
+            {loading ? <Loader/> : error ? <Message variant='danger'>{error}</Message> :(
+          
+          
+          <Table  striped bordered hover responsive className='table-sm'>
+          
+          
+              <thead>
+                  <tr>
+                      <th>Ime</th>
+                      <th>Pozicija</th>
+                      <th>Godine</th>
+                    {userInfo.isKordinator ? <th></th> : <></>}  
+          
+          
+                  </tr>
+              </thead>
+          
+              <tbody>
+          
+                  {
+                  
+                  prijaveKorisnici.map(prijavice=>
+                       
+                   
+          
+                     
+                      korisnici.map(korisnik=>(
+          
+                          korisnik._id===prijavice.korisnikId &&    
+                        <tr key={korisnik._id}>
+                          
+                            <td>{korisnik.ime}</td>
+                            <td>{korisnik.pozicija}</td>
+                            <td>{korisnik.brgod}</td>
+                        
+                        
+                           
+                        
+                        
+                        
+                            
+                        
+                        
+                            
+                        </tr>
+                        
+                                ))
+          
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    )
+                  
+                  
+                  
+                  
+           }
+              </tbody>
+          </Table>
           
           
           
           
+          )}
           
           
+          <Paginate page={page} pages={pages} link={`/profil/prijave/${params.id}/${kampId}/page/`}/>
           
           
-          )
-        
-        
-        
-        
- }
-    </tbody>
-</Table>
-
-
-
-
-)}
-
-
-<Paginate page={page} pages={pages} link={`/profil/prijave/${params.id}/${kampId}/page/`}/>
-
-
-  </div>
-
-  
-  : <div key={kordinator._id}></div>
- 
- 
-  
-  ))}
-
-              </Col>
+            </div>
           
+            
+            : <div key={kordinator._id}></div>
+           
+           
+            
+            ))}
+          
+                        </Col>
+                    }
     </Row>
   
    </>          

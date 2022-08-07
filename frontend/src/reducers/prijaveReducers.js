@@ -3,7 +3,11 @@ import {CREATE_OCENA_FAIL, CREATE_OCENA_REQUEST, CREATE_OCENA_RESET, CREATE_OCEN
 ,PRIJAVE_KORISNICI_SUCCESS,
 PRIJAVE_ZAKAMP_FAIL,
 PRIJAVE_ZAKAMP_SUCCESS,
-PRIJAVE_ZAKAMP_REQUEST} from '../constants/prijaveConstants'
+PRIJAVE_ZAKAMP_REQUEST,
+DELETE_OCENA_RESET,
+DELETE_OCENA_SUCCESS,
+DELETE_OCENA_REQUEST,
+DELETE_OCENA_FAIL} from '../constants/prijaveConstants'
 
 export const prijaveKreirajReducer =(state={},action) =>{
 
@@ -158,6 +162,32 @@ export const CreateOcenaReducer= (state={},action)=>{
       case CREATE_OCENA_FAIL:
           return{loading:false,error:action.payload}
       case CREATE_OCENA_RESET:
+          return{
+
+          }
+     default:
+           return state
+  
+  
+    }
+  
+  
+  
+  }
+
+export const DeleteOcenaReducer= (state={},action)=>{
+
+    //3 tipa akcije
+  
+    switch(action.type)
+    {
+      case DELETE_OCENA_REQUEST:
+          return{loading:true}
+      case DELETE_OCENA_SUCCESS:
+          return{loading:false,success:true}
+      case DELETE_OCENA_FAIL:
+          return{loading:false,error:action.payload}
+      case DELETE_OCENA_RESET:
           return{
 
           }

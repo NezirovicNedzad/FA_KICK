@@ -103,10 +103,9 @@ const createPrijave= asyncHandler(async(req,res)=>{
     })
     
     const DeletePrijave=asyncHandler(async(req,res)=>{
-    
-
+  
             const prijava=await Prijave.findById(req.params.id)
-          
+          Prijave.f
             if(prijava)
             {
           await prijava.remove()
@@ -124,8 +123,7 @@ const createPrijave= asyncHandler(async(req,res)=>{
           
           })
 
-
-    const createOcena=asyncHandler(async(req,res)=>{
+const createOcena=asyncHandler(async(req,res)=>{
     
 
            const {tehnika,taktika,fizika,text,trening}=req.body
@@ -161,6 +159,39 @@ const prijava= await Prijave.findById(req.params.id)
 
         
 
+          const DeleteOcena=asyncHandler(async(req,res)=>{
+    
+            const prijavaId=req.params.id;
+            
+             const idOcene=req.params.ocenaId;
+            
+
+            const prijava=await Prijave.findById(req.params.id);
+            if(prijava)
+            {
+              await  Prijave.findOneAndUpdate({ _id: prijava }, { $pull: { ocene: { _id:idOcene  } } }, { new: true });
+
+ 
+              res.json("Uspesno");
+
+            }
+            else
+            {
+              res.status(404)
+              throw new Error("Nije pronadjena prijava")
+            }
+            
+           
+    
+          
+       
+     
+       
+     
+           })
+ 
+ 
+    
 
 
 
@@ -169,4 +200,4 @@ const prijava= await Prijave.findById(req.params.id)
 
     
     
-    export {createPrijave,getPrijave,getPrijaveById,DeletePrijave,createOcena,getPrijavePoKampu,getPrijavePoKorisniku,getPrijavezaKamp}
+    export {createPrijave,getPrijave,getPrijaveById,DeletePrijave,createOcena,getPrijavePoKampu,getPrijavePoKorisniku,getPrijavezaKamp,DeleteOcena}

@@ -92,13 +92,19 @@ useEffect (()=>{
 const prijavi =()=>{
 
 
-  if(window.confirm("Jeste li sigurni da zelite da se prijavite na ovaj kamp?"))
-    {
+  
       if(!userInfo)
       {
+
+        if(window.confirm("Da bi ste se prijavili na kamp morate se ulgovati!"))
              navigate(`/login?redirect=${redirect}`)     
+
       }
-      else if(userInfo.isAdmin || userInfo.isKordinator)
+
+      else  if(window.confirm("Da bi ste se sigurni da želite da se prijavite na kamp?"))
+    {  
+
+      if(userInfo.isAdmin || userInfo.isKordinator)
       {
            var btn1=document.getElementById('btn1')
    
@@ -157,8 +163,8 @@ const prijavi =()=>{
       
     
      
+    
     }
-
   
 }
 

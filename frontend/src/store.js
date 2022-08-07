@@ -7,7 +7,7 @@ import { novostByIDReducer, novostCreateReducer, novostDeleteReducer, novostRedu
 import { korisnickiLoginReducers,korisnickiRegisterReducers,korisnickDetaljiReducer,korisnickUpdateReducer, kordinatoriListaReducer,korisniciListaReducer,korisniciDeleteReducer, korisniciListazaKampReducer, korisnickiVerifyReducers, ForgetPasswordReducer,ResetPasswordReducer } from './reducers/korisnickiReducer'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import {arhCampCreateReducer, arhCampDetailsReducers, arhCampListReducers, CreateReviewReducer} from "./reducers/arhcampReducers"
-import { prijavaByIdReducer, prijaveKreirajReducer,prijaveListReducer,prijaveDeleteReducer, CreateOcenaReducer, prijavazaKampReducer, prijavazaKorisnikeReducer, prijavaZaKampReducer } from './reducers/prijaveReducers'
+import { prijavaByIdReducer, prijaveKreirajReducer,prijaveListReducer,prijaveDeleteReducer, CreateOcenaReducer, prijavazaKampReducer, prijavazaKorisnikeReducer, prijavaZaKampReducer, DeleteOcenaReducer } from './reducers/prijaveReducers'
 
 const reducer=combineReducers({
 
@@ -40,6 +40,7 @@ prijavaOceni:CreateOcenaReducer,
 prijavaKamp:prijavazaKampReducer,
 prijavasviKorisnici:prijavazaKorisnikeReducer,
 prijavazaKamp:prijavaZaKampReducer,
+prijavaOceneDelete:DeleteOcenaReducer,
 arhiviraniCreate:arhCampCreateReducer,
 arhiviraniList:arhCampListReducers,
 arhiviraniDetails:arhCampDetailsReducers,

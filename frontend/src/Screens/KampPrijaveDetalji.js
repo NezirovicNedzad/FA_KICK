@@ -25,6 +25,7 @@ const dispatch=useDispatch()
 
 
 
+
 const campDetail=useSelector(state=>state.campDetails)
 const {loading,error,camp}=campDetail
 
@@ -49,7 +50,6 @@ const {loading:loadingKorisnici,error:errorKorisnici,korisnici}=korisniciLista
 const prijavezaSvakiKamp = useSelector(state =>state.prijavaKamp)
 const {prijave,page,pages}=prijavezaSvakiKamp
 
-console.log(page,pages)
 
 
 const prijaveDelete = useSelector(state => state.prijaveDelete)
@@ -63,7 +63,7 @@ const pageNumber=params.pageNumber
 
 
 
-console.log(pageNumber)
+
 useEffect (()=>{
 
   dispatch(listKordinatori())
@@ -82,7 +82,7 @@ useEffect (()=>{
    if(successDelete)
    {
 
-    setTimeout(() => dispatch({type:PRIJAVE_DELETE_RESET}),3000)
+    setTimeout(() => dispatch({type:PRIJAVE_DELETE_RESET}),5000)
    }
    
   
@@ -102,10 +102,17 @@ const deleteHandler =(id)=>{
 
 }
 
+
+
 const oceniHandler =(id)=>{
 
     navigate(`/kamp/prijave/${id}/ocene`)
 
+}
+const detalji_kor=(id)=>{
+
+
+  navigate(`/profil/prijave/${id}/${params.id}`)
 }
 
 
@@ -156,13 +163,13 @@ const oceniHandler =(id)=>{
               <th>Email</th>
               <th>Pozicija</th>
               <th>Godine</th>
-            {userInfo.isKordinator ? <th>Izbriši/Oceni</th> : <></>}  
-  
+          
+             <th>Ukloni -  Oceni - Profil</th>
   
           </tr>
       </thead>
   
-      <tbody>
+      
           {
           
           loadingKorisnici ? <Loader/> : errorKorisnici ?<Message variant="danger">{errorKorisnici}</Message> :
@@ -200,6 +207,11 @@ const oceniHandler =(id)=>{
                    <Button style={{margin:"0 1rem"}} variant="dark" className='btn-sm' onClick={()=>
                       oceniHandler(prijavice._id)} >
                          <i className="fas fa-edit"></i>
+                               
+                        </Button>
+                   <Button style={{margin:"0 1rem"}} variant="dark" className='btn-sm' onClick={()=>
+                    detalji_kor(prijavice._id)} >
+                        <i className="fa-solid fa-user"></i>
                               
                         </Button>
                    
@@ -226,7 +238,7 @@ const oceniHandler =(id)=>{
         
           
    }
-      </tbody>
+      
   </Table>
 
   <Paginate page={page} pages={pages} link={`/kamp/prijave/${params.id}/page/`}/>

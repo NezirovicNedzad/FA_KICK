@@ -5,7 +5,9 @@ import {useSelector,useDispatch} from "react-redux"
 import {createOcenaPrijave} from '../actions/prijaveactions'
 import { CREATE_OCENA_RESET } from '../constants/prijaveConstants'
 import Message from '../components/Message'
-import { Link } from 'react-router-dom'
+
+import { useNavigate} from "react-router-dom"
+
 
 const OceniScreen = () => {
     const params=useParams()
@@ -14,6 +16,7 @@ const OceniScreen = () => {
       const [fizika,setFizika]=useState(0)
     const [text,setText]=useState('')
 
+    const navigate=useNavigate()
    
     const [trening,setTrening]=useState('')
     const dispatch=useDispatch()
@@ -40,6 +43,11 @@ const OceniScreen = () => {
       
       
       },[dispatch,successOcena])
+
+      const izvrsi = () =>{
+
+      navigate(-1);
+      }
     const submitHandler= (e)=> {
         e.preventDefault()
         
@@ -50,7 +58,7 @@ const OceniScreen = () => {
     <>
     <Row style={{marginTop:"4.5rem",paddingTop:"2rem"}}>
         <Col md={4}>
-        <Link to={`/profil`} style={{marginLeft:"4%"}} className='dodaj'>Vrati se</Link>
+        <Button onClick={()=>izvrsi()} style={{marginLeft:"4%"}} className='dodaj'>Vrati se</Button>
         </Col>
         <Col md={4}>
             {successOcena && <Message>Uspešno ste ocenili studenta!</Message>}
