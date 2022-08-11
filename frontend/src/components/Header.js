@@ -2,7 +2,7 @@ import React  from 'react'
   import {LinkContainer} from 'react-router-bootstrap'
 import { Nav, Navbar ,Container,Image, NavDropdown} from 'react-bootstrap'
 import {useDispatch,useSelector} from 'react-redux'
-import SearchBox from './SearchBox'
+
 import { logout} from '../actions/korisnikaction'
 
 import './menu.css'
@@ -55,7 +55,7 @@ const logoutHandler=()=>{
 <Navbar.Collapse>
 
 
-<div style={{display:"flex",alignItems:"center",justifyContent:"center"}}><SearchBox/></div>
+
 <Nav className="ml-auto my-2 my-lg-0">
             <LinkContainer to='/'>
             <Nav.Link >O NAMA</Nav.Link>

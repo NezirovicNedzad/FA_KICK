@@ -66,7 +66,7 @@ useEffect (()=>{
  if(success)
  {
 
-  setTimeout(() => dispatch({type:DELETE_OCENA_RESET}),3000)
+  setTimeout(() => dispatch({type:DELETE_OCENA_RESET}),5000)
  }
  
 
@@ -111,7 +111,7 @@ useEffect (()=>{
             
             
             {prijava.ocene.length===0 ? <Message>Trenutno nemate nijednu ocenu!</Message> :
-             <SliderOcena prijava={prijava} error={error} loading={loading} success={success}/>}
+             <SliderOcena prijava={prijava} error={error} loading={loading} success={success} loadingDelete={loadingDelete}/>}
 
            
 

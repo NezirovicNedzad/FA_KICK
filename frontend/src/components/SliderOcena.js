@@ -12,7 +12,7 @@ import {useDispatch,useSelector} from "react-redux"
 import KarticaZaOcene from "./KarticaZaOcene";
 
 
-const  SliderOcena =({prijava,error,loading,success}) => {
+const  SliderOcena =({prijava,error,loading,success,loadingDelete}) => {
 
 
 
@@ -47,7 +47,7 @@ const  SliderOcena =({prijava,error,loading,success}) => {
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
-            
+            dots:true,
             arrows: false,
           }
         },
@@ -70,7 +70,9 @@ const  SliderOcena =({prijava,error,loading,success}) => {
         <Slider  {...settings}  >
         {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader/>}
+            {loadingDelete &&<Loader/>}
  {prijava.ocene.reverse().map(ocena => (
+
   
    <KarticaZaOcene key={ocena._id} ocena={ocena} idOcene={ocena._id} idPrijave={prijava._id} success={success} />
 

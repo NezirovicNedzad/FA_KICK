@@ -42,11 +42,12 @@ const SearchBox = () => {
   return (
     <>
     <Form onSubmit={submitHandler} >
-        <div style={{width:"100%"}} className='RED'>
+        <div  className='RED'>
+
         <Form.Control type="text" name="q"
         onChange={(e)=>setKeyword(e.target.value)}
         placeholder="Pretraži kampove.."
-        className='mr-sm-2 ml-sm-5'
+        
         
         ></Form.Control>
    

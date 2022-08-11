@@ -1,4 +1,5 @@
-import React ,{useEffect}from "react";
+import React ,{useEffect,useState}from "react";
+
 import Slider from "react-slick";
 import Kartica from "./Kartica"; 
 import Message from "./Message";
@@ -11,12 +12,21 @@ import { listArhCamps } from "../actions/arhcampactions";
 import Kartica2 from "./Kartica2";
 import { useParams } from "react-router";
 
+import Modals from "./Modals";
+
+import { Button } from "react-bootstrap";
+
+
+
 const  SimpleSlider =() => {
 
   const params=useParams()
   const keyword=params.keyword
 
   const dispatch=useDispatch();
+
+
+  const[openModal,setOpenModal]=useState(false)
 
   const  campsList = useSelector(state => state.campList)
    
@@ -28,7 +38,14 @@ const  SimpleSlider =() => {
 
   const userLogin = useSelector(state => state.korisnickiLogin)
 
-const{userInfo}=userLogin
+
+
+
+  const{userInfo}=userLogin
+
+
+
+
 
   useEffect( () =>{
     dispatch(listCamps(keyword))
@@ -78,9 +95,15 @@ const{userInfo}=userLogin
      
 {
   camps.length<3 ? <>
+  
+   <div style={{display:"flex",justifyContent:"right"}}><Button  style={{backgroundColor:"#e70b0b"}} onClick={()=>{setOpenModal(true)}} >Pretrazite <i style={{marginLeft:"0.6rem"}} className="fa-solid fa-magnifying-glass"></i></Button></div>
+      <div style={{display:"flex",justifyContent:"center"}}>
+     {openModal ? <Modals closeModal={setOpenModal} /> : null}
+        </div> 
   <div className="redovi">
+ 
    {camps.map(camp => (
-<div key={camp._id} style={{maxWidth:"33%"}} className="kol32">
+<div key={camp._id} style={{maxWidth:"40%"}} className="kol32">
 <Kartica   camps={camp}/>
 </div>
 ))}
@@ -88,7 +111,13 @@ const{userInfo}=userLogin
   </> : <>
   
   {loading? <Loader></Loader>  : error ? <Message variant='danger'>{error}</Message>:
-        <Slider  {...settings}  >
+       <>
+       <div style={{display:"flex",justifyContent:"right"}}><Button style={{backgroundColor:"#e70b0b"}} onClick={()=>{setOpenModal(true)}} >Pretražite <i style={{marginLeft:"0.6rem"}} className="fa-solid fa-magnifying-glass"></i></Button></div>
+      <div style={{display:"flex",justifyContent:"center"}}>
+     {openModal ? <Modals closeModal={setOpenModal}  /> : null}
+        </div> 
+       <Slider  {...settings}  >
+          
  {camps.map(camp => (
   
    <Kartica key={camp._id} camps={camp}/>
@@ -99,6 +128,7 @@ const{userInfo}=userLogin
 
 
         </Slider> 
+        </>
 }
   </>
 }
@@ -110,7 +140,7 @@ const{userInfo}=userLogin
   {acamps.length<3 ? <>
   <div className="redovi">
    {acamps.map(acamp => (
-<div key={acamp._id} style={{maxWidth:"33%"}} className="kol32">
+<div key={acamp._id} style={{maxWidth:"43%"}} className="kol32">
 
    <Kartica2 key={acamp._id} camps={acamp} />
     
@@ -121,7 +151,9 @@ const{userInfo}=userLogin
   </> : <>
   
   {loadingArhivirani? <Loader></Loader>  : errorArhivirani ? <Message variant='danger'>{errorArhivirani}</Message>:
-        <Slider  {...settings}  >
+     
+    <Slider  {...settings}  >
+    
  {acamps.map(acamp => (
    
    <Kartica2 key={acamp._id} camps={acamp}/>
