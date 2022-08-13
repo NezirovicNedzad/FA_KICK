@@ -31,9 +31,9 @@ const getKampovi= asyncHandler(async(req,res)=>{
 
    console.log(vrsta1,vrsta2,vrsta3,maxCena,minCena)
 
-    const params= vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena==='' && maxCena===''  ? {} : 
+    const params= vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena==='' && maxCena==''  ? {} : 
 
-    vrsta1!=='' && vrsta2!=='' && vrsta3!=='' && minCena==='' && maxCena==='' ? {
+    vrsta1!=='' || vrsta2!=='' || vrsta3!=='' || minCena==='' && maxCena==='' ? {
 
 
         $or:[
