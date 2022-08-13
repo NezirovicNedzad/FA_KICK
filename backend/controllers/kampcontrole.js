@@ -20,11 +20,133 @@ const getKampovi= asyncHandler(async(req,res)=>{
     {}
 
     
-    const {tipovi}=req.body 
-    const {cene}=req.body
-/*
-    const params= tipovi.length===0 && cene.length===0  ? {} : 
+    const vrsta1=req.query.vrsta1
+    const vrsta2=req.query.vrsta2
+    const vrsta3=req.query.vrsta3
+
+   
+     
+    const minCena=req.query.minCena
+    const maxCena=req.query.maxCena
+
+   console.log(vrsta1,vrsta2,vrsta3,maxCena,minCena)
+
+    const params= vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena==='' && maxCena===''  ? {} : 
+
+    vrsta1!=='' && vrsta2!=='' && vrsta3!=='' && minCena==='' && maxCena==='' ? {
+
+
+        $or:[
+ 
+ 
+            {
+             tip:vrsta1
+            },
+ 
+            {tip:vrsta2
+            },
+ 
+            {tip:vrsta3
+            }   
+            
+        ]
+
+
+    } :
+    vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena!=='' && maxCena==='' ?
+
+{  
+    cena:{              
+    $gte:minCena
+         }
+
+
+} : vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena==='' && maxCena!='' ? {
+   
+
+    cena:{              
+        $lte:maxCena
+             }
+
+} : 
+ vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena!=='' && maxCena!='' ? {
+    $and:[
+
+
+
+        { 
+         cena:{
+             
+             
+             $gte:minCena
+          
+         }
+        },
+        
+         {cena:{
+             
+             
+             $lte:maxCena
+          
+         }}
+     
+     ]
+
+
+
+} :
+
+
+{
+
+    $and:[
+        {
+        $and:[
+
+
+
+            { 
+             cena:{
+                 
+                 
+                 $gte:minCena
+              
+             }},
+            
+             {cena:{
+                 
+                 
+                 $lte:maxCena
+              
+             }}
+         
+         ] },
+            
     
+         {$or:[
+ 
+ 
+         {tip:vrsta1},
+         {tip:vrsta2},
+         {tip:vrsta3},
+         
+         
+       
+       
+             
+         
+     ]}
+            
+    ]
+    
+   
+
+
+
+}
+
+console.log(maxCena)
+/*    
     tipovi.length!==0 && cene.length===0  ? {
 
 
@@ -147,7 +269,7 @@ const getKampovi= asyncHandler(async(req,res)=>{
 
     const kampovi=await Kamp.find({
 
-      ...keyword
+      ...params
 
     }
     )
