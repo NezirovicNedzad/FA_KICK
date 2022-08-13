@@ -6,19 +6,154 @@ import Kamp from "../models/kamp.js"
 
 const getKampovi= asyncHandler(async(req,res)=>{
 
+    
     const keyword=req.query.keyword ?{
-
+ 
 
         tip:{
+
+            
             $regex:req.query.keyword,
             $options:'i'
         }
     }: 
     {}
-    
-    const kampovi=await Kamp.find({...keyword})
 
+    
+    const {tipovi}=req.body 
+    const {cene}=req.body
+/*
+    const params= tipovi.length===0 && cene.length===0  ? {} : 
+    
+    tipovi.length!==0 && cene.length===0  ? {
+
+
+
+        $or:[
+ 
+ 
+            {tip:tipovi[0]},
+            {tip:tipovi[1]},
+            {tip:tipovi[2]},
+            
+            
+          
+          
+                
+            
+        ]
+    } : 
+
+    tipovi.length===0 && cene.length===2  ? {
+
+        $and:[
+
+
+
+            { 
+             cena:{
+                 
+                 
+                 $gte:cene[0]
+              
+             }},
+            
+             {cena:{
+                 
+                 
+                 $lte:cene[1]
+              
+             }}
+         
+         ]
+
+        
+    } : 
+    tipovi.length===0 && cene.length===1  ? {
+
+       
+
+
+
+            
+             cena:{
+                 
+                 
+                 $gte:cene[0]
+              
+             }
+            
+           
+         
+         
+
+        
+    } : 
+    
+  {
+        
+        $and:[
+            {
+            $and:[
+
+
+
+                { 
+                 cena:{
+                     
+                     
+                     $gte:cene[0]
+                  
+                 }},
+                
+                 {cena:{
+                     
+                     
+                     $lte:cene[1]
+                  
+                 }}
+             
+             ] },
+                
+        
+             {$or:[
+     
+     
+             {tip:tipovi[0]},
+             {tip:tipovi[1]},
+             {tip:tipovi[2]},
+             
+             
+           
+           
+                 
+             
+         ]}
+                
+        ]
+        
+       
+
+         
+
+           
+                    
+        }
+        
+        
+     */
+
+ 
+
+    const kampovi=await Kamp.find({
+
+      ...keyword
+
+    }
+    )
+  
     res.json(kampovi)
+
 })
 
 
