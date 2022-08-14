@@ -23,7 +23,9 @@ const getKampovi= asyncHandler(async(req,res)=>{
     const vrsta1=req.query.vrsta1
     const vrsta2=req.query.vrsta2
     const vrsta3=req.query.vrsta3
+const tipovi=[]
 
+tipovi.push(vrsta1,vrsta2,vrsta3)
    
      
     const minCena=req.query.minCena
@@ -31,30 +33,95 @@ const getKampovi= asyncHandler(async(req,res)=>{
 
    console.log(vrsta1,vrsta2,vrsta3,maxCena,minCena)
 
-    const params= vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena==='' && maxCena==''  ? {} : 
+   
+    const params = vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena==='' && maxCena===''  ? {} : 
 
-    vrsta1!=='' || vrsta2!=='' || vrsta3!=='' || minCena==='' && maxCena==='' ? {
+    vrsta1!=='' && vrsta2!=='' && vrsta3!=='' && minCena==='' && maxCena==='' ? {
 
 
         $or:[
- 
- 
-            {
-             tip:vrsta1
-            },
- 
-            {tip:vrsta2
-            },
- 
-            {tip:vrsta3
-            }   
+               {
+                tip:vrsta1
+               },
+    
+               {tip:vrsta2
+               },
+    
+               {tip:vrsta3
+               }   
             
         ]
 
 
-    } :
-    vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena!=='' && maxCena==='' ?
+    } :vrsta1!=='' && vrsta2!=='' && vrsta3!=='' && minCena!=='' && maxCena==='' ?
+    {
+        $and:[
+            
+            
+    
+    
+    
+                { 
+                 cena:{
+                     
+                     
+                     $gte:minCena
+                  
+                 }
+                },
+                
+                 
+             
+             
+                
+        
+             {
+                
+                $or:[
+     
+     
+             {tip:vrsta1},
+             {tip:vrsta2},
+             {tip:vrsta3},
+        
+         ]}
+                
+        ]
+        
+       
 
+    }:vrsta1!=='' && vrsta2!=='' && vrsta3!=='' && minCena==='' && maxCena!=='' ?
+    { $and:[
+            
+            
+    
+    
+    
+        { 
+         cena:{
+             
+             
+             $lte:maxCena
+          
+         }
+        },
+        
+
+     {
+        
+        $or:[
+
+
+     {tip:vrsta1},
+     {tip:vrsta2},
+     {tip:vrsta3},
+
+ ]}
+        
+]}
+        :
+    vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena!=='' && maxCena==='' ?
+    
 {  
     cena:{              
     $gte:minCena
@@ -94,7 +161,141 @@ const getKampovi= asyncHandler(async(req,res)=>{
 
 
 
-} :
+} :(vrsta1!=='' || vrsta2!=='' || vrsta3!=='') &&(minCena!=='' && maxCena==='')?{
+    
+    $and:[
+        {
+        $and:[
+
+
+
+            { 
+             cena:{
+                 
+                 
+                 $gte:minCena
+              
+             }},
+            
+          
+         
+         ] },
+            
+    
+         {$or:[
+ 
+ 
+         {tip:vrsta1},
+         {tip:vrsta2},
+         {tip:vrsta3},
+         
+         
+       
+       
+             
+         
+     ]}
+            
+    ]
+    
+
+
+}:
+(vrsta1!=='' || vrsta2!=='' || vrsta3!=='') && (minCena==='' && maxCena=='')
+?  {
+   
+
+
+    $or:[
+
+
+        {tip:vrsta1},
+        {tip:vrsta2},
+        {tip:vrsta3},
+   
+    ]
+   
+
+
+} : (vrsta1!=='' || vrsta2!=='' || vrsta3!=='') && (minCena==='' && maxCena!='') ?{
+    $and:[
+        {
+        $and:[
+
+
+
+            { 
+             cena:{
+                 
+                 
+                 $lte:maxCena
+              
+             }},
+            
+          
+         
+         ] },
+            
+    
+         {$or:[
+ 
+ 
+         {tip:vrsta1},
+         {tip:vrsta2},
+         {tip:vrsta3},
+         
+         
+       
+       
+             
+         
+     ]}
+            
+    ]
+
+}: (vrsta1!=='' || vrsta2!=='' || vrsta3!=='') && (minCena!=='' && maxCena!='') ?
+{
+    $and:[
+        {
+        $and:[
+
+
+
+            { 
+             cena:{
+                 
+                 
+                 $gte:minCena
+              
+             }},
+            
+             {cena:{
+                 
+                 
+                 $lte:maxCena
+              
+             }}
+         
+         ] },
+            
+    
+         {$or:[
+ 
+ 
+         {tip:vrsta1},
+         {tip:vrsta2},
+         {tip:vrsta3},
+         
+         
+       
+       
+             
+         
+     ]}
+            
+    ]
+
+} /*: vrsta1!=='' && vrsta2!=='' && vrsta3!=='' && minCena!=='' && maxCena!='' ? 
 
 
 {
@@ -143,130 +344,20 @@ const getKampovi= asyncHandler(async(req,res)=>{
 
 
 
+}*/ :{
+
+
+
 }
 
 console.log(maxCena)
-/*    
-    tipovi.length!==0 && cene.length===0  ? {
 
 
 
-        $or:[
- 
- 
-            {tip:tipovi[0]},
-            {tip:tipovi[1]},
-            {tip:tipovi[2]},
-            
-            
-          
-          
-                
-            
-        ]
-    } : 
-
-    tipovi.length===0 && cene.length===2  ? {
-
-        $and:[
-
-
-
-            { 
-             cena:{
-                 
-                 
-                 $gte:cene[0]
-              
-             }},
-            
-             {cena:{
-                 
-                 
-                 $lte:cene[1]
-              
-             }}
-         
-         ]
-
-        
-    } : 
-    tipovi.length===0 && cene.length===1  ? {
-
-       
-
-
-
-            
-             cena:{
-                 
-                 
-                 $gte:cene[0]
-              
-             }
-            
-           
-         
-         
-
-        
-    } : 
-    
-  {
-        
-        $and:[
-            {
-            $and:[
-
-
-
-                { 
-                 cena:{
-                     
-                     
-                     $gte:cene[0]
-                  
-                 }},
-                
-                 {cena:{
-                     
-                     
-                     $lte:cene[1]
-                  
-                 }}
-             
-             ] },
-                
-        
-             {$or:[
-     
-     
-             {tip:tipovi[0]},
-             {tip:tipovi[1]},
-             {tip:tipovi[2]},
-             
-             
-           
-           
-                 
-             
-         ]}
-                
-        ]
-        
-       
-
-         
-
-           
-                    
+        if(maxCena=='')
+        {
+            console.log(tipovi.length)
         }
-        
-        
-     */
-
- 
-
     const kampovi=await Kamp.find({
 
       ...params
