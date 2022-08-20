@@ -1,6 +1,10 @@
 {
   "name": "fa_kick",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.15.1",
+    "npm":"8.11.0"
+  },
   "description": "FA_KICK ",
   "main": "server.js",
   "type": "module",
