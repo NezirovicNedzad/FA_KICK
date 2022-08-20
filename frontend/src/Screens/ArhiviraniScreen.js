@@ -69,7 +69,7 @@ const submitHandler = (e) => {
         <Col md={9} style={{borderRight:"1px dotted",marginBottom:"0.5rem",padding:"2.4rem"}} >
         {loadingArhivirani ?  <Loader/> : errorArhivirani ? <Message variant="danger">{errorArhivirani}</Message>
        : (
-        <>
+        <div >
         
         <Link to='/' style={{marginLeft:"4%"}} className='dodaj'>Vrati se</Link>
         <div style={{marginTop:"2rem"}}  className='RED'>
@@ -102,7 +102,7 @@ const submitHandler = (e) => {
 
 
 
-       </>
+       </div>
 
 
              
@@ -118,11 +118,11 @@ const submitHandler = (e) => {
  <h3>Ocene</h3>
  {acamp.reviews.length===0 && <Message>Kamp trenutno nije ocenjen!</Message>}
 
-   <ListGroup>
+   <ListGroup >
 
      {acamp.reviews.map(review=>
       
-      <ListGroup.Item variant="flush">
+      <ListGroup.Item key={review._id} variant="flush">
         <strong>{review.ime}</strong>
         <Rating  value={review.rating}
                 color2="black" color="#f8e825"

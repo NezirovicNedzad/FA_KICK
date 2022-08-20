@@ -60,9 +60,9 @@ const deleteNovost= asyncHandler(async(req,res)=>{
 
 const createNovosti= asyncHandler(async(req,res)=>{
 
-    const {naslov,kratkitext,slika,text}=req.body
+    const {naslov,uvod,kratkitext,citat,slika,text}=req.body
     
-    const naslovpostoji=await Novost.findOne({naslov,kratkitext,slika,text})
+    const naslovpostoji=await Novost.findOne({naslov,uvod,kratkitext,citat,slika,text})
 
     if(naslovpostoji)
     {
@@ -75,7 +75,9 @@ const createNovosti= asyncHandler(async(req,res)=>{
     const novost=await Novost.create({
      
       naslov,
+      uvod,
       kratkitext,
+      citat,
       slika,
       text
 

@@ -106,7 +106,7 @@ export const NovostDelete=(id) =>async(dispatch,getState)=>{
 
 
 
-export const novostiKreiraj=(naslov,kratkitext,slika,text)=>async(dispatch,getState)=>{
+export const novostiKreiraj=(naslov,uvod,kratkitext,citat,slika,text)=>async(dispatch,getState)=>{
     try {
         dispatch({
             type:NOVOST_CREATE_REQUEST
@@ -123,7 +123,7 @@ export const novostiKreiraj=(naslov,kratkitext,slika,text)=>async(dispatch,getSt
         }
     
         const {data}=await axios.post('/api/novosti',
-        {naslov,kratkitext,slika,text},config)
+        {naslov,uvod,kratkitext,citat,slika,text},config)
     
         dispatch({
     

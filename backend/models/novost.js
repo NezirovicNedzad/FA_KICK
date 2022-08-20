@@ -11,10 +11,24 @@ naslov:{
     required:true,
 },
 
+uvod:{
+
+
+    type:String,
+    
+},
+
 kratkitext:{
 
     type:String,
     required:true,
+},
+citat:{
+    type:String,
+    
+},
+text:{
+    type:String
 },
 
 slika:{
@@ -22,9 +36,7 @@ slika:{
     type:String
 },
 
-text:{
-    type:String
-}
+
 
 
 },{

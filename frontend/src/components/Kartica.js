@@ -14,11 +14,14 @@ const Kartica = ({camps}) => {
         <img className="img-circle" src={camps.slika} alt="nesto" />
         </div>
         
-        <div className="imepreporuke"><Link name={camps.cena} to ={`/kamp/${camps._id}`} >{camps.tip}</Link></div>
-        <p>
-
-        {camps.opis}
-        </p>
+        <div className="imepreporuke"><Link name={camps.cena} to ={`/kamp/${camps._id}`} >{camps.tip}
+     
+        </Link></div>
+        
+        <p>Cena učešća:{camps.cena}din</p>
+        <p>{camps.opis}
+            </p>
+           
       </div>
     </div>
     )

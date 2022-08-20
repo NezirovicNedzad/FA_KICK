@@ -56,7 +56,7 @@ const izbrisi=(idp,ido)=>{
       
      <BarChart  tehnika={ocena.tehnika} taktika={ocena.taktika} fizika={ocena.fizika}/>
      </div>
-     <div style={{textAlign:"center;",paddingTop:"1rem"}} className='kol3'>
+     <div style={{textAlign:"center",paddingTop:"1rem"}} className='kol3'>
 
     
       <p style={{margin:"1.2rem 0",color:"white"}}><span className='name'>Komentar trenera:</span>{ocena.text}</p>

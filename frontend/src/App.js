@@ -51,7 +51,22 @@ const App =() => {
       <Route path='/login/verify-email'  element={<VerifyScreen/>}/>
       <Route path='/' element={<Onama/>} exact/>
       <Route path='/admin/listakorisnika/page/:pageNumber' element={<ListaKorisnika/>} />
-      <Route path='/search/:keyword' element={<Onama/>} exact/>
+      <Route path='/search/:vrsta1' element={<Onama/>} exact/>
+      <Route path='/search2/:vrsta1/:vrsta2' element={<Onama/>} exact/>
+      <Route path='/searchmin/:minCena' element={<Onama/>} exact/>
+      <Route path='/searchmax/:maxCena' element={<Onama/>} exact/>
+      <Route path='/searchall/:vrsta1/:vrsta2/:vrsta3' element={<Onama/>} exact/>
+      <Route path='/searchalm/:vrsta1/:minCena/' element={<Onama/>} exact/>
+      <Route path='/searchalm2/:vrsta1/:vrsta2/:minCena/' element={<Onama/>} exact/>
+      <Route path='/searchalm3/:vrsta1/:vrsta2/:vrsta3/:minCena/' element={<Onama/>} exact/>
+      <Route path='/searchmax1/:vrsta1/:maxCena/' element={<Onama/>} exact/>
+      <Route path='/searchmax2/:vrsta1/:vrsta2/:maxCena/' element={<Onama/>} exact/>
+      <Route path='/searchmax3/:vrsta1/:vrsta2/:vrsta3/:maxCena/' element={<Onama/>} exact/>
+
+      <Route path='/searchrange/:minCena/:maxCena' element={<Onama/>} exact/>
+      <Route path='/searchrange1/:vrsta1/:minCena/:maxCena' element={<Onama/>} exact/>
+      <Route path='/searchrange2/:vrsta1/:vrsta2/:minCena/:maxCena' element={<Onama/>} exact/>
+      <Route path='/searchrange3/:vrsta1/:vrsta2/:vrsta3/:minCena/:maxCena' element={<Onama/>} exact/>
       <Route path='/profil/prijave/:id/:kampId' element={<PrijavaDetalji/>}></Route>
       <Route path='/profil/prijave/:id/:kampId/page/:pageNumber' element={<PrijavaDetalji/>}></Route>
       <Route path='/novosti/:id' element={<Novostdetails/>}/>

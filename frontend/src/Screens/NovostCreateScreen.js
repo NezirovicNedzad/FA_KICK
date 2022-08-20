@@ -14,7 +14,10 @@ const NovostCreateScreen = () =>{
 
 
     const [naslov,setNaslov]=useState('')
+
+    const [uvod ,setUvod]=useState('')
     const [kratkitext,setKratkiText]=useState('')
+    const [citat,setCitat]=useState('')
    const [text,setText]=useState('')
     const [slika,setSlika]=useState('')
     const [uploading,setUploading]=useState(false)
@@ -80,7 +83,7 @@ const NovostCreateScreen = () =>{
     }
     else
     {
-           dispatch(novostiKreiraj(naslov,kratkitext,slika,text))
+           dispatch(novostiKreiraj(naslov,uvod,kratkitext,citat,slika,text))
     }
 
 
@@ -148,6 +151,17 @@ const NovostCreateScreen = () =>{
 
                         </Form.Control>
                         </Form.Group>
+                   <Form.Group controlId='uvod'>
+
+                        <Form.Label>Uvod</Form.Label>
+                        <Form.Control 
+                        type='text'
+                        placeholder='uvod..'
+                        value={uvod}
+                        onChange={(e)=>setUvod(e.target.value)} >
+
+                        </Form.Control>
+                        </Form.Group>
                    <Form.Group controlId='kratkitext'>
 
                         <Form.Label>Kraci opis</Form.Label>
@@ -156,6 +170,17 @@ const NovostCreateScreen = () =>{
                         placeholder='vas opis..'
                         value={kratkitext}
                         onChange={(e)=>setKratkiText(e.target.value)} >
+
+                        </Form.Control>
+                   </Form.Group>
+                   <Form.Group controlId='citat'>
+
+                        <Form.Label>Citat</Form.Label>
+                        <Form.Control 
+                        type='text'
+                        placeholder='vas opis..'
+                        value={citat}
+                        onChange={(e)=>setCitat(e.target.value)} >
 
                         </Form.Control>
                    </Form.Group>

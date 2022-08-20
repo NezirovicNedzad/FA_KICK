@@ -122,7 +122,7 @@ dispatch(register(ime,email,password,slika,brgod,pozicija))
 
                         <Form.Label>Email Adresa</Form.Label>
                         <Form.Control 
-                        type='email'
+                        type='text'
                         placeholder='vas email..'
                         value={email}
                         onChange={(e)=>setEmail(e.target.value)} >

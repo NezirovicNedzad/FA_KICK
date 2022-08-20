@@ -1,10 +1,20 @@
 import React from 'react'
 import { Button} from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
-
+import { useNavigate } from 'react-router'
 import './menu.css'
 
 const Karousel = () => {
+
+
+  const navigate=useNavigate()
+
+  const usmeri=()=>{
+    navigate("/kampovi")
+  }
+  const objekti=()=>{
+    navigate("/objekti")
+  }
     return (
         <Carousel fade>
         <Carousel.Item>
@@ -16,7 +26,7 @@ const Karousel = () => {
           <Carousel.Caption>
             <h1>Dobrodošli</h1>
             <h3>Poglejdate opcije koje nudimo i budite i vi učesnik!</h3>
-            <Button type='button'className='btn-lg'>
+            <Button type='button' onClick={()=>usmeri()} className='btn-lg'>
                  Prijavi se!
 
             </Button>
@@ -33,7 +43,7 @@ const Karousel = () => {
           <Carousel.Caption>
             <h1>Upoznajte se bolje sa našim objektima!</h1>
             <h3>Pogledajte sa čime raspolažemo pri našim uslugama.</h3>
-            <Button type='button'className='btn-lg'>
+            <Button onClick={()=>objekti()} type='button'className='btn-lg'>
                  Pogledaj!
 
             </Button>

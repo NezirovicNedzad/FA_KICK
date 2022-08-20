@@ -5,14 +5,14 @@ import { CAMP_CREATE_SUCCESS,CAMP_CREATE_REQUEST,CAMP_CREATE_FAIL,CAMP_LIST_REQU
     CAMP_UPDATE_REQUEST,CAMP_UPDATE_FAIL,CAMP_UPDATE_SUCCESS } from "../constants/campConstants"
 
 
-export const listCamps=(keyword='') =>async(dispatch)=>{
+export const listCamps=(vrsta1='',vrsta2='',vrsta3='',minCena='',maxCena='') =>async(dispatch)=>{
 
     try {
         dispatch(
             {type:CAMP_LIST_REQUEST}
         )
 
-        const {data}=await axios.get(`/api/kampovi?keyword=${keyword}`)
+        const {data}=await axios.get(`/api/kampovi?vrsta1=${vrsta1}&vrsta2=${vrsta2}&vrsta3=${vrsta3}&minCena=${minCena}&maxCena=${maxCena}`)
         dispatch(
             {type:CAMP_LIST_SUCCESS,
             

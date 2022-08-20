@@ -6,18 +6,354 @@ import Kamp from "../models/kamp.js"
 
 const getKampovi= asyncHandler(async(req,res)=>{
 
-    const keyword=req.query.keyword ?{
 
+    
+    const keyword=req.query.keyword ?{
+ 
 
         tip:{
+
+            
             $regex:req.query.keyword,
             $options:'i'
         }
     }: 
     {}
-    
-    const kampovi=await Kamp.find({...keyword})
 
+    
+    const vrsta1=req.query.vrsta1
+    const vrsta2=req.query.vrsta2
+    const vrsta3=req.query.vrsta3
+const tipovi=[]
+
+tipovi.push(vrsta1,vrsta2,vrsta3)
+   
+     
+    const minCena=req.query.minCena
+    const maxCena=req.query.maxCena
+
+   console.log(vrsta1,vrsta2,vrsta3,maxCena,minCena)
+
+   
+    const params = vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena==='' && maxCena===''  ? {} : 
+
+    vrsta1!=='' && vrsta2!=='' && vrsta3!=='' && minCena==='' && maxCena==='' ? {
+
+
+        $or:[
+               {
+                tip:vrsta1
+               },
+    
+               {tip:vrsta2
+               },
+    
+               {tip:vrsta3
+               }   
+            
+        ]
+
+
+    } :vrsta1!=='' && vrsta2!=='' && vrsta3!=='' && minCena!=='' && maxCena==='' ?
+    {
+        $and:[
+            
+            
+    
+    
+    
+                { 
+                 cena:{
+                     
+                     
+                     $gte:minCena
+                  
+                 }
+                },
+                
+                 
+             
+             
+                
+        
+             {
+                
+                $or:[
+     
+     
+             {tip:vrsta1},
+             {tip:vrsta2},
+             {tip:vrsta3},
+        
+         ]}
+                
+        ]
+        
+       
+
+    }:vrsta1!=='' && vrsta2!=='' && vrsta3!=='' && minCena==='' && maxCena!=='' ?
+    { $and:[
+            
+            
+    
+    
+    
+        { 
+         cena:{
+             
+             
+             $lte:maxCena
+          
+         }
+        },
+        
+
+     {
+        
+        $or:[
+
+
+     {tip:vrsta1},
+     {tip:vrsta2},
+     {tip:vrsta3},
+
+ ]}
+        
+]}
+        :
+    vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena!=='' && maxCena==='' ?
+    
+{  
+    cena:{              
+    $gte:minCena
+         }
+
+
+} : vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena==='' && maxCena!='' ? {
+   
+
+    cena:{              
+        $lte:maxCena
+             }
+
+} : 
+ vrsta1==='' && vrsta2==='' && vrsta3==='' && minCena!=='' && maxCena!='' ? {
+    $and:[
+
+
+
+        { 
+         cena:{
+             
+             
+             $gte:minCena
+          
+         }
+        },
+        
+         {cena:{
+             
+             
+             $lte:maxCena
+          
+         }}
+     
+     ]
+
+
+
+} :(vrsta1!=='' || vrsta2!=='' || vrsta3!=='') &&(minCena!=='' && maxCena==='')?{
+    
+    $and:[
+        {
+        $and:[
+
+
+
+            { 
+             cena:{
+                 
+                 
+                 $gte:minCena
+              
+             }},
+            
+          
+         
+         ] },
+            
+    
+         {$or:[
+ 
+ 
+         {tip:vrsta1},
+         {tip:vrsta2},
+         {tip:vrsta3},
+         
+         
+       
+       
+             
+         
+     ]}
+            
+    ]
+    
+
+
+}:
+(vrsta1!=='' || vrsta2!=='' || vrsta3!=='') && (minCena==='' && maxCena=='')
+?  {
+   
+
+
+    $or:[
+
+
+        {tip:vrsta1},
+        {tip:vrsta2},
+        {tip:vrsta3},
+   
+    ]
+   
+
+
+} : (vrsta1!=='' || vrsta2!=='' || vrsta3!=='') && (minCena==='' && maxCena!='') ?{
+    $and:[
+        {
+        $and:[
+
+
+
+            { 
+             cena:{
+                 
+                 
+                 $lte:maxCena
+              
+             }},
+            
+          
+         
+         ] },
+            
+    
+         {$or:[
+ 
+ 
+         {tip:vrsta1},
+         {tip:vrsta2},
+         {tip:vrsta3},
+         
+         
+       
+       
+             
+         
+     ]}
+            
+    ]
+
+}: (vrsta1!=='' || vrsta2!=='' || vrsta3!=='') && (minCena!=='' && maxCena!='') ?
+{
+    $and:[
+        {
+        $and:[
+
+
+
+            { 
+             cena:{
+                 
+                 
+                 $gte:minCena
+              
+             }},
+            
+             {cena:{
+                 
+                 
+                 $lte:maxCena
+              
+             }}
+         
+         ] },
+            
+    
+         {$or:[
+ 
+ 
+         {tip:vrsta1},
+         {tip:vrsta2},
+         {tip:vrsta3},
+         
+         
+       
+       
+             
+         
+     ]}
+            
+    ]
+
+} /*: vrsta1!=='' && vrsta2!=='' && vrsta3!=='' && minCena!=='' && maxCena!='' ? 
+{
+    $and:[
+        {
+        $and:[
+            { 
+             cena:{
+                 
+                 
+                 $gte:minCena
+              
+             }},
+            
+             {cena:{
+                 
+                 
+                 $lte:maxCena
+              
+             }}
+         
+         ] },
+            
+    
+         {$or:[
+ 
+ 
+         {tip:vrsta1},
+         {tip:vrsta2},
+         {tip:vrsta3},
+         
+         
+       
+       
+             
+         
+     ]}
+            
+    ]
+    
+   
+}*/ :{
+
+
+
+}
+
+
+
+
+
+       
+    const kampovi=await Kamp.find({
+
+      ...params
+
+    }
+    )
+  
     res.json(kampovi)
 })
 

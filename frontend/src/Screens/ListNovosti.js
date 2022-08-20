@@ -98,7 +98,9 @@ const ListNovosti = () => {
         <tr>
             <th>ID</th>
             <th>Naslov</th>
+            <th>Uvod</th>
             <th>Kratki text</th>
+            <th>Citat</th>
             <th>Duži text</th>
             <th></th>
            
@@ -115,7 +117,9 @@ const ListNovosti = () => {
 <tr key={novost._id}>
     <td>{novost._id}</td>
     <td>{novost.naslov}</td>
+    <td>{novost.uvod}</td>
    <td>{novost.kratkitext}</td>
+   <td>{novost.citat}</td>
    <td>{novost.text}</td>
   
 

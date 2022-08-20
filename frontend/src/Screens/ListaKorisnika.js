@@ -21,7 +21,7 @@ const ListaKorisnika = () => {
     const {loading,error,korisnici,page,pages}=korisniciLista
 
 
-    console.log(page,pages)
+
     const login=useSelector(state=>state.korisnickiLogin)
     const {userInfo}=login
 

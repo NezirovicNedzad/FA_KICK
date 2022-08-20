@@ -4,6 +4,7 @@ import React,{useState,useEffect} from "react"
 import {Form,Button,Row,Col} from 'react-bootstrap'
 import {useDispatch,useSelector,} from 'react-redux'
 import Message from '../components/Message'
+import axios from "axios"
 
 import { useNavigate } from "react-router-dom"
 import {KORISNICKI_UPDATE_RESET} from '../constants/korisnickeConstants'
@@ -20,6 +21,9 @@ const UpdateScreen = () => {
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const [confirmPassword,setConfirmPassword]=useState('')
+   
+    const [uploading,setUploading]=useState(false)
+   
     const [slika,setSlika]=useState('')
 
 
@@ -39,6 +43,37 @@ const UpdateScreen = () => {
     
    const navigate=useNavigate()
 
+
+   const uploadFileHandler =async (e) =>{
+     const file=e.target.files[0]//samo prvu sliku
+     const formData=new FormData()
+     formData.append('image',file)
+     setUploading(true)
+     try {
+          const config= {
+
+         headers:
+         {
+
+         'Content-Type':'multipart/form-data'
+         }
+
+                    }
+
+
+          const {data}=await axios.post('/api/upload',formData,config)
+
+          setSlika(data)
+          setUploading(false)
+     } catch (error) {
+          console.error(error)
+          setUploading(false)
+     }
+
+
+
+
+}       
   
   
      useEffect(()=>{
@@ -48,21 +83,24 @@ const UpdateScreen = () => {
     {
   navigate('/login')
     }
-    else{
+    
         if(!user )
         {
             
             dispatch(getKorisnickiDetalji('profil'))
         }
 
-        else if(success)
+     if(success)
         {
-              dispatch({
+             
+           
+          window.location.reload()
+    setTimeout(() => dispatch({
 
-               type:KORISNICKI_UPDATE_RESET
-              })
-              navigate('/profil')
+     type:KORISNICKI_UPDATE_RESET
+    }),4500)
 
+   
        
         }
      else {
@@ -76,7 +114,7 @@ const UpdateScreen = () => {
        
       }
 
-    }
+
   },[userInfo,navigate,user,dispatch,success])
   
  
@@ -105,10 +143,10 @@ const UpdateScreen = () => {
    
    console.log(user.slika)
     return (
-        <Row className="drugi" >
+     <Row  style={{padding:"1rem"}}className="drugi">
            <Col  md={4}>
 </Col>          
-<Col md={4}>
+<Col  md={4}>
            <Button onClick={vrati} className="my-3" >Vrati se</Button>
            <h1 style={{color:'#e70b0b'}}>Promeni podatke</h1>
             {message && <Message variant='danger'>{message}</Message>}
@@ -138,17 +176,23 @@ const UpdateScreen = () => {
 
                         </Form.Control>
                    </Form.Group>
-                   <Form.Group controlId='slika'>
+                   <Form.Group controlId='image'>
 
-                        <Form.Label>URL slike</Form.Label>
-                        <Form.Control 
-                        type='text'
-                        placeholder='vasa slika..'
-                        value={slika}
-                        onChange={(e)=>setSlika(e.target.value)} >
+                         <Form.Label>URL slike</Form.Label>
+                         <Form.Control 
+                         type='text'
+                         placeholder='vasa slika..'
+                         value={slika}
+                         onChange={(e)=>setSlika(e.target.value)} >
 
-                        </Form.Control>
-                   </Form.Group>
+
+                         </Form.Control>
+                         <input     type="file" onChange={uploadFileHandler} id="file-input"></input>
+                         <label htmlFor="file-input"><i className="fas fa-image"></i> Izaberi sliku</label>
+
+
+                         {uploading && <Loader/>}
+                       </Form.Group>
                   
                   
 

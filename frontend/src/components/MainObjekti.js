@@ -82,12 +82,11 @@ tri obroka dnevno koja će uvek pratiti njihove treninge.Uz redovne obroke stude
 
 Osim kurseva fudbala i edukacije, Akademija nudi niz drugih aktivnosti za studente, kao što su seminari, radionice, posete 
 fudbalskim utakmicama, gostujući govornici uključujući neka od velikih imena fudbala, večernja zabava, vežbe team-buildinga i mnoge druge aktivnosti koje ne samo da će doprineti vašem fudbalskom razvoju, već će vaše vreme ovde u akademiji učiniti zabavnim, ugodnijim i prijatnijim.
-
+ 
+</p>
 <p>
 Akademija nudi veoma visok nivo fudbalskog znanja kroz naše trenere koji su sa nama dugi niz godina.Broj kampova će varirati u toku godine ali osnovu će činiti
 prethodno navedene kategorije.
-</p>
- 
 </p>
 
 <img className="img-fluid" style={{width:'85%'}} src="/images/igranje.jpg"  alt="slika"/>

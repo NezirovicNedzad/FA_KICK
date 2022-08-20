@@ -58,13 +58,53 @@ const registerKorisnik=asyncHandler(async(req,res)=>{
 
    const userExists=await Korisnik.findOne({email})
 
+   if(ime==='' || email==='' || password===''|| slika==='' || pozicija==='' || brgod==='')
+   {
+    res.status(400)
+    throw new Error("Sva polja moraju biti popunjena!")
+   }
+
+   if(
+    /^([A-Z])([a-z]){2,15}\s([A-Z])([a-z]){2,30}((\-[A-Z])([a-z]){2,30})?$/.test(ime)===false
+   )
+   {
+
+    res.status(400)
+    throw new Error("Ime i prezime nisu validni!")
+   }
+
+   if(
+    /^([A-Z])?([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/.test(email)===false
+   )
+   {
+    res.status(400)
+    throw new Error("Email nije validnog formata!")
+
+   }
+   if(userExists)
+   {
+       res.status(400)
+       throw new Error("Korisnik sa ovakvim e-mailom vec postoji!")
+   }
+   if(
+     brgod<8 || brgod>20
+   )
+   {
+    res.status(400)
+    throw new Error("Starost mora biti izmedju 8 i 20!")
+
+   }
+   if(
+     password<=8 && password >=20
+   )
+   {
+    res.status(400)
+    throw new Error("Password mora duzine biti izmedju 8 i 20 karaktera!")
+
+   }
 //pronalazimo email i password
 
-   if(userExists)
-{
-    res.status(400)
-    throw new Error("User already created!")
-}
+
 
 
 const user =await Korisnik.create({
@@ -412,7 +452,7 @@ const updatekorisnik= asyncHandler(async(req,res) =>{
       pozicija:user.pozicija,
       licenca:user.licenca,
       brgod:user.brgod,
-    
+      verified:true,
       isAdmin:user.isAdmin,
       isKordinator:user.isKordinator,
       token:generateToken(user._id)

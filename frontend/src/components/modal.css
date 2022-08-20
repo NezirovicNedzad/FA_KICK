@@ -4,9 +4,7 @@
 
 
     position: fixed;
-    top: 70px;
-
-  
+    top:100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,3 +78,45 @@
   .novi22{
     font-size: 20px;
   }
+
+
+  
+@media (max-width: 770px) {
+  .modalContainer h1 {
+  font-size: 1.3rem;
+  }
+ 
+  .modalContainer .body{
+    font-size: 1rem;
+  }
+  #naslov{
+    font-size: 1.2rem;
+  }
+
+  label{
+    font-size: 1rem;
+  }
+  .novi22{
+    font-size: 15px;
+  }
+
+}
+  
+@media (max-width: 380px) {
+  .modalContainer {
+top: 60px;
+  }
+
+
+}
+
+#x{
+  background-color: #e70b0b;
+  color:white;
+ 
+}
+
+#x:hover{
+  background-color: black;
+  
+}

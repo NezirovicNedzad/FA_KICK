@@ -206,7 +206,7 @@ span.visually-hidden {
 /*---Media za responsive*/
 @media (max-width: 767px) {
   .carousel-caption h1 {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
   .myrow {
     flex-direction: column !important;
@@ -216,7 +216,7 @@ span.visually-hidden {
   }
 
   .carousel-caption h3 {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
 
     padding-bottom: 0.5rem;
   }
@@ -225,7 +225,8 @@ span.visually-hidden {
   }
 
   .btn-lg {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
   }
   
   .novi2 {
@@ -522,7 +523,7 @@ div.novi.container-fluid {
   width: fit-content;
   border-radius: 7px;
   text-decoration: none;
-  padding: 4px;
+  padding: 10px;
   color: white;
   text-align: center;
   font-size: 20px;

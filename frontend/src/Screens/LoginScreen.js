@@ -46,7 +46,7 @@ const navigate =useNavigate()
    
   },[userInfo,navigate,redirect,error,count])
   
-  console.log(count)
+  
   const submitHandler = (e) =>{
     e.preventDefault()
     SetCount(count+1)

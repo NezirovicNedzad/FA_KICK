@@ -20,12 +20,27 @@ import { Button } from "react-bootstrap";
 
 const  SimpleSlider =() => {
 
+
+  const [first, setFirst] = useState('');
+  const [second, setSecond] = useState('');
+  const [third, setThird] = useState('');
+
+
   const params=useParams()
   const keyword=params.keyword
+  const vrsta1=params.vrsta1;
+  const vrsta2=params.vrsta2;
+  const vrsta3=params.vrsta3;
+  const minCena=params.minCena;
+const maxCena=params.maxCena;
+
+
+
 
   const dispatch=useDispatch();
 
-
+const tipovi=[];
+const cene=[]
   const[openModal,setOpenModal]=useState(false)
 
   const  campsList = useSelector(state => state.campList)
@@ -39,6 +54,8 @@ const  SimpleSlider =() => {
   const userLogin = useSelector(state => state.korisnickiLogin)
 
 
+  
+
 
 
   const{userInfo}=userLogin
@@ -48,10 +65,10 @@ const  SimpleSlider =() => {
 
 
   useEffect( () =>{
-    dispatch(listCamps(keyword))
+    dispatch(listCamps(vrsta1,vrsta2,vrsta3,minCena,maxCena))
     dispatch(listArhCamps())
   
-} ,[dispatch,keyword])
+} ,[dispatch,vrsta1,vrsta2,vrsta3,minCena,maxCena])
 
     const settings = {
    
@@ -95,14 +112,23 @@ const  SimpleSlider =() => {
      
 {
   camps.length<3 ? <>
+
+
   
-   <div style={{display:"flex",justifyContent:"right"}}><Button  style={{backgroundColor:"#e70b0b"}} onClick={()=>{setOpenModal(true)}} >Pretrazite <i style={{marginLeft:"0.6rem"}} className="fa-solid fa-magnifying-glass"></i></Button></div>
+   <div style={{display:"flex",justifyContent:"right"}}><Button  style={{backgroundColor:"#e70b0b"}} onClick={()=>{setOpenModal(true)}} >Pretražite <i style={{marginLeft:"0.6rem"}} className="fa-solid fa-magnifying-glass"></i></Button></div>
       <div style={{display:"flex",justifyContent:"center"}}>
-     {openModal ? <Modals closeModal={setOpenModal} /> : null}
+     {openModal ? <Modals closeModal={setOpenModal} cene={cene}  tipovi={tipovi} 
+     
+     /> : null}
         </div> 
+        {camps.length===0 && !loading && <div style={{textAlign:"center",color:"white",fontSize:"1.3rem"}}><p>Nema podudaranja sa pretragom!</p></div>}
   <div className="redovi">
- 
-   {camps.map(camp => (
+
+    {  loading ? <Loader></Loader>  : error ? <Message variant='danger'>{error}</Message>:
+   
+   
+   camps.map(camp => (
+    
 <div key={camp._id} style={{maxWidth:"40%"}} className="kol32">
 <Kartica   camps={camp}/>
 </div>
@@ -110,15 +136,17 @@ const  SimpleSlider =() => {
   </div>
   </> : <>
   
-  {loading? <Loader></Loader>  : error ? <Message variant='danger'>{error}</Message>:
+  
        <>
        <div style={{display:"flex",justifyContent:"right"}}><Button style={{backgroundColor:"#e70b0b"}} onClick={()=>{setOpenModal(true)}} >Pretražite <i style={{marginLeft:"0.6rem"}} className="fa-solid fa-magnifying-glass"></i></Button></div>
       <div style={{display:"flex",justifyContent:"center"}}>
-     {openModal ? <Modals closeModal={setOpenModal}  /> : null}
+     {openModal ? <Modals closeModal={setOpenModal} tipovi={tipovi} cene={cene} /> : null}
         </div> 
        <Slider  {...settings}  >
-          
- {camps.map(camp => (
+      
+  {loading? <Loader></Loader>  : error ? <Message variant='danger'>{error}</Message>:
+ 
+ camps.map(camp => (
   
    <Kartica key={camp._id} camps={camp}/>
 
@@ -129,12 +157,12 @@ const  SimpleSlider =() => {
 
         </Slider> 
         </>
-}
+
   </>
 }
 
 
-{ userInfo ? <div style={{marginTop:"1rem"}}>
+{ userInfo && !userInfo.isKordinator ? <div style={{marginTop:"1rem"}}>
   <h4 >Ocenite neke od naših prethodnih kampova </h4>
 
   {acamps.length<3 ? <>

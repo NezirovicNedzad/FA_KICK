@@ -56,14 +56,18 @@ const Novostdetails = () => {
     <h3 style={{padding:"1rem 0",color:"#e70b0b"}}>
      {novost.naslov}
     </h3>
+    <p>{novost.uvod}</p>
     
     
-   <img src={`../${novost.slika}`} className="img-fluid "  style={{width:'65%'}} alt="nesto" />
+    
+   <img src={novost.slika} className="img-fluid "  style={{width:'65%'}} alt="nesto" />
   
       
     <h5 style={{marginTop:"2.4rem",color:"#e70b0b"}}> 
       {novost.kratkitext}
       </h5>
+
+      { novost.citat ? <><p style={{backgroundColor:"lightgray",fontFamily:"cursive",padding:"1rem"}}>"{novost.citat}"</p></> : <></>}
   
   
   
@@ -117,7 +121,9 @@ const Novostdetails = () => {
   
    {loading? <Loader></Loader> : error ? <Message variant='danger'>{error}</Message> : <> {novosti.map(novost2=> (
   
-        <>
+        <div key={novost2._id}>
+        {novost2._id!==novost._id ? <div key={novost2._id}>
+        
           <h4>{novost2.naslov}</h4>
 <div className="card" >
 
@@ -129,7 +135,10 @@ const Novostdetails = () => {
 </div>
 <div className="centriraj"> <Link to={`/novosti/${novost2._id}`}>Pogledaj</Link></div> 
 </div>
-        </>
+        
+        </div> :<div key={novost2._id}></div> }
+
+        </div>
 
 
   ))

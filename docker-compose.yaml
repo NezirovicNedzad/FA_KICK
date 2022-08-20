@@ -1,31 +1,30 @@
-version: '3.8'
+version: '3.4'
 
-
-services: 
-  api_gate: 
-    build: ./api_gate
+services:
+  mongodb:
+    image: mongo:latest
+    restart: unless-stopped
+    env_file: ./.env
     ports:
-      - 8000:8000
-    environment:
-      DB_URL: mongodb://db//FA_KICK
-  kampservice: 
-    build: ./kampoviService
-    ports:
-      - 8001:8001
-    environment:
-      DB_URL: mongodb://db//kampService  
-  novostiservice: 
-    build: ./novostiService
-    ports:
-      - 8002:8002
-    environment:
-      DB_URL: mongodb://db//novostiService    
-  db:
-    image: mongo:4.0-xenial
-    ports:
-      - 27017:27017
+      - "27019:27019"
     volumes:
-      - FA_KICK:/data/db
+      - data:/data/db
+  backend:
+    image: backend
+    depends_on:
+      - mongodb
+    build:
+      context: .
+      dockerfile: ./api_gate/Dockerfile
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+    ports:
+      - "3001:3001"
+    links:
+      - mongodb
+    volumes:
+      - .:/usr/src/index
 
 volumes:
-  FA_KICK:
+  data:
