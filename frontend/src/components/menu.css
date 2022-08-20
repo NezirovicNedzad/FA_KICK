@@ -268,6 +268,11 @@ span.visually-hidden {
     margin: 0.6rem 0;
     text-align: center !important;
   }
+  #d22{
+    padding: 0.6rem ;
+    margin: 0.6rem;
+
+  }
 }
 
 @media (max-width: 505px) {

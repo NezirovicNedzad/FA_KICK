@@ -127,7 +127,7 @@ const Novostdetails = () => {
           <h4>{novost2.naslov}</h4>
 <div className="card" >
 
-<img className='card-img-top' src={`../${novost2.slika}`} alt='Nesto' />
+<img className='card-img-top' src={novost2.slika} alt='Nesto' />
 
 <div className="card-body">
 <p className="card-text">{novost2.kratkitext}</p>

@@ -115,7 +115,7 @@ const cene=[]
 
 
   
-   <div style={{display:"flex",justifyContent:"right"}}><Button  style={{backgroundColor:"#e70b0b"}} onClick={()=>{setOpenModal(true)}} >Pretražite <i style={{marginLeft:"0.6rem"}} className="fa-solid fa-magnifying-glass"></i></Button></div>
+   <div style={{display:"flex",justifyContent:"right"}}><Button id="d22"  style={{backgroundColor:"#e70b0b"}} onClick={()=>{setOpenModal(true)}} >Pretražite <i style={{marginLeft:"0.6rem"}} className="fa-solid fa-magnifying-glass"></i></Button></div>
       <div style={{display:"flex",justifyContent:"center"}}>
      {openModal ? <Modals closeModal={setOpenModal} cene={cene}  tipovi={tipovi} 
      
@@ -138,7 +138,7 @@ const cene=[]
   
   
        <>
-       <div style={{display:"flex",justifyContent:"right"}}><Button style={{backgroundColor:"#e70b0b"}} onClick={()=>{setOpenModal(true)}} >Pretražite <i style={{marginLeft:"0.6rem"}} className="fa-solid fa-magnifying-glass"></i></Button></div>
+       <div style={{display:"flex",justifyContent:"right"}}><Button id="d22" style={{backgroundColor:"#e70b0b"}} onClick={()=>{setOpenModal(true)}} >Pretražite <i style={{marginLeft:"0.6rem"}} className="fa-solid fa-magnifying-glass"></i></Button></div>
       <div style={{display:"flex",justifyContent:"center"}}>
      {openModal ? <Modals closeModal={setOpenModal} tipovi={tipovi} cene={cene} /> : null}
         </div> 

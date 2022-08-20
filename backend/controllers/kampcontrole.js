@@ -342,14 +342,7 @@ tipovi.push(vrsta1,vrsta2,vrsta3)
 
 }
 
-console.log(maxCena)
 
-
-
-        if(maxCena=='')
-        {
-            console.log(tipovi.length)
-        }
     const kampovi=await Kamp.find({
 
       ...params

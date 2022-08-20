@@ -153,7 +153,7 @@ if(tipovi.length===3 && min!=='' && max!=='' )
 <div className='modalContainer'>
  <div style={{display:"flex",justifyContent:"right"}}> <button id="x" onClick={()=>closeModal(false)}><i style={{color:"white"}} className="fa-solid fa-x"></i></button></div>
   <div className='title'>
-    <h1>Pretraga kampova</h1>
+    <h1>Pretraga</h1>
   </div>
   <div className='body'>
   <div style={{display:"flex",alignItems:"center",justifyContent:"center",marginTop:"1rem"}}> 
@@ -194,7 +194,7 @@ if(tipovi.length===3 && min!=='' && max!=='' )
 
     <button id='cancelbtn' onClick={()=>closeModal(false)}>Otkazi</button>
     <button onClick={()=>(pretraga(),closeModal(false))}>Pretrazi</button>
-  </div>,
+  </div>
 
 </div>
 
