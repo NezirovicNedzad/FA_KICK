@@ -296,7 +296,7 @@ var mailOptions = {
 from: process.env.EMAIL,
 to: user.email,
 subject: 'Resetovanje Šifre',
-html:genereatePasswordResetTemplate(`http://localhost:3000/login/reset-password?token=${randomBytes}&id=${user._id}`),
+html:genereatePasswordResetTemplate(`https://fa-kickapp.herokuapp.com/login/reset-password?token=${randomBytes}&id=${user._id}`),
 };
 
 transporter.sendMail(mailOptions, function(error, info){
