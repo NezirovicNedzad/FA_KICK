@@ -6,6 +6,7 @@ import {Verify} from '../actions/korisnikaction'
 import Loader from "../components/Loader"
 import Message from "../components/Message"
 import { useNavigate } from "react-router-dom"
+import { logout,deleteKorisnici} from '../actions/korisnikaction'
 
 const VerifyScreen = () => {
   
@@ -21,7 +22,15 @@ const {loading,success,error}=verifiyUser
 
 const userLogin = useSelector(state => state.korisnickiLogin)
 const {userInfo}=userLogin
-
+const logoutHandler=()=>{
+  if(window.confirm("Da li ste sigurni?Ovim vaš mail neće više biti dostupan za prijavu dok admin team ne odobri ponovno prijavljivanje!"))
+  {
+    dispatch(logout())
+  }
+  
+ 
+ 
+ }
 useEffect(()=>{
 
  if(success)
@@ -64,7 +73,7 @@ useEffect(()=>{
             {loading && <Loader></Loader>}
             {error && <Message variant='danger'>{error}</Message>}
             
-            <Form onSubmit={submitHandler} >
+            <Form style={{marginBottom:"2rem"}} onSubmit={submitHandler} >
                    <Form.Group controlId='otp'>
 
                         <Form.Label style={{fontSize:"1.2rem"}}>Unesite kod</Form.Label>
@@ -81,10 +90,14 @@ useEffect(()=>{
                     </Button>
 </div> 
             </Form>
+           
             
        
   </Col>
-  <Col md={3}></Col>
+  <Col md={3}>
+  <p>Ne želite prijavu trenutno sa ovim mailom?</p>
+            <Button onClick={()=>logoutHandler()}>Otkaži sve</Button>
+  </Col>
 </Row>
 
 
