@@ -71,8 +71,7 @@ app.use(errorHandler)
 
 
 
-const PORT=process.env.PORT 
 const mode=process.env.NODE_ENV
-app.listen(5001,console.log(`Server radi u  ${mode} modu na portu: ${PORT} `.yellow.bold))
+app.listen(5001,console.log(`Server radi u  ${mode} modu na portu: 5001} `.yellow.bold))
 
 
