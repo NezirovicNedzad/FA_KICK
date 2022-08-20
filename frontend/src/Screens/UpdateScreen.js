@@ -141,7 +141,7 @@ const UpdateScreen = () => {
    }   
    
    
-   console.log(user.slika)
+
     return (
      <Row  style={{padding:"1rem"}}className="drugi">
            <Col  md={4}>

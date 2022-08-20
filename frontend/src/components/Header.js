@@ -72,8 +72,8 @@ const logoutHandler=()=>{
             <Nav.Link name='prijavi' >PRIJAVI SE</Nav.Link>
             </LinkContainer>) :
            !userInfo.verified ? (
+            <LinkContainer to='/login/verify-email'><Nav.Link   >Verifikacija</Nav.Link></LinkContainer>
             
-            <Nav.Link >Verifikacija</Nav.Link>
          
 
            ) :

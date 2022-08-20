@@ -162,8 +162,9 @@ const cene=[]
 }
 
 
-{ userInfo && !userInfo.isKordinator ? <div style={{marginTop:"1rem"}}>
+{ userInfo && !userInfo.isKordinator && userInfo.verified ? <div style={{marginTop:"1rem"}}>
   <h4 >Ocenite neke od naših prethodnih kampova </h4>
+
 
   {acamps.length<3 ? <>
   <div className="redovi">
