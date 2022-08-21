@@ -11,6 +11,7 @@ import {ArhCampDetails,createArhReview} from "../actions/arhcampactions"
 import Loader from '../components/Loader'
 import { Link } from 'react-router-dom'
 import Rating from '../components/Rating'
+import "./profil.css"
 const ArhiviraniScreen = () => {
 
    const [rating,setRating]=useState(0)
@@ -65,8 +66,8 @@ const submitHandler = (e) => {
   return (
     <>
     <>
-        <Row style={{marginTop:"2.5rem",paddingTop:"1rem"}}>
-        <Col md={9} style={{borderRight:"1px dotted",marginBottom:"0.5rem",padding:"2.4rem"}} >
+        <div className='flex21' style={{paddingTop:"1rem"}}>
+        <div className='dod2' style={{borderRight:"1px dotted",marginBottom:"0.5rem",marginTop:"3.7rem",padding:"2.4rem"}} >
         {loadingArhivirani ?  <Loader/> : errorArhivirani ? <Message variant="danger">{errorArhivirani}</Message>
        : (
         <div >
@@ -173,14 +174,14 @@ const submitHandler = (e) => {
    </ListGroup>
 
 
-             </Col>
+             </div>
          
 
        
              
           
 
-            <Col style={{paddingTop:"2.4rem"}} md={3}>
+            <div style={{paddingTop:"2.4rem",flex:"3"}} >
            
            
  {kordinatori.map(kordinator=>(
@@ -195,9 +196,9 @@ const submitHandler = (e) => {
     ))}
 
 
-              </Col>
+              </div>
           
-    </Row>
+    </div>
   
    </>          
   </>

@@ -46,6 +46,14 @@
   transition: 0.4s all ease-in-out !important;
   color: white !important;
 }
+.flex21{
+  display: flex;
+}
+
+.dod2{
+  flex: 9;
+  border-right: 1px grey dotted;
+}
 
 .podaci {
   padding: 0.5rem 1rem;
@@ -224,6 +232,12 @@ border-right: 1px grey dotted;
 @media (max-width: 767px) {
   .redovi {
     flex-direction: column;
+  }
+  .flex21{
+    flex-direction: column;
+  }
+  .dod2{
+    border-right: none!important;
   }
   .cont{
     flex-direction: column;

@@ -171,13 +171,13 @@ const prijavi =()=>{
 
   return <>
     <>
-        <Row style={{marginTop:"4.5rem",paddingTop:"1rem"}}>
+        <div className='flex21' style={{marginTop:"4.5rem",paddingTop:"1rem"}}>
         {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader/>}
              
-            <Col md={9} style={{borderRight:"1px dotted",marginBottom:"0.5rem"}} >
+            <div className='dod2' style={{marginBottom:"0.5rem",marginTop:"1.7rem"}} >
         
-            <Link to='/' style={{marginLeft:"4%"}} className='dodaj'>Vrati se</Link>
+            <Link to='/' style={{marginLeft:"4%",}} className='dodaj'>Vrati se</Link>
           
             <Container className="centriraj">
             <Image  className='slika' fluid width="60%" src={camp.slika} alt="Vaša slika.." />
@@ -201,10 +201,10 @@ const prijavi =()=>{
            <p style={{padding:"1rem"}}>{message}</p>
 
 
-            </Col>
+            </div>
             
 
-            <Col md={3} >
+            <div style={{flex:"3"}} >
            
 
  {kordinatori.map(kordinator=>(
@@ -218,9 +218,9 @@ const prijavi =()=>{
   
   ))}
 
-              </Col>
+              </div>
           
-    </Row>
+    </div>
   
    </>          
   </>;
