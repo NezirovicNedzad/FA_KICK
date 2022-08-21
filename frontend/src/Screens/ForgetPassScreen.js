@@ -7,7 +7,7 @@ import Loader from "../components/Loader"
 import Message from "../components/Message"
 import { useNavigate } from "react-router-dom"
 import { forgotPassword } from "../actions/korisnikaction"
-
+import './profil.css'
 
 const ForgetScreen = () => {
   
@@ -37,13 +37,13 @@ useEffect(()=>{
         }
         
   return (
-    <div style={{height:"50rem",marginTop:"8rem"}}>
+    <div className="prv" style={{height:"50rem",marginTop:"8rem"}}>
 
 <Row>
 
 
-  <Col md={3}></Col>
-  <Col md={6}>
+  <div className="lefcol"></div>
+  <div className="rightcol">
   <div className="jumbotron novi"  style={{padding:"1rem"}}>
   
   <div className="centriraj">  <img className="img-fluid slika" width="210rem" alt="nEKATO" src="/images/logofa.png"/> </div>
@@ -81,8 +81,8 @@ useEffect(()=>{
             </Form>
             
        
-  </Col>
-  <Col md={3}></Col>
+  </div>
+  <div className="right2col"></div>
 </Row>
 
 

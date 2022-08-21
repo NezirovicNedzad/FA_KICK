@@ -139,9 +139,9 @@ navigate('/profil/update')
             </> : user.isKordinator ?<>
             
             
-            <Row style={{marginTop:"7rem"}}>
+            <div className="cont" style={{marginTop:"7rem"}}>
              
-             <Col className="prvi" md={3}>
+             <div className="leftrow">
              {error && <Message variant='danger'>{error}</Message>}
               {loading && <Loader/>}
              <h3>{user.ime}</h3>
@@ -185,9 +185,9 @@ navigate('/profil/update')
   <Container className="centriraj">
              <Button className="dodaj" onClick={promeni}>Promeni</Button>
              </Container>
-             </Col>
+             </div>
   
-             <Col md={9} >
+             <div className="rightrow" >
                <h3 style={{textAlign:"center"}}>Kampovi</h3>
                <br></br>
                {userInfo.isAdmin ? <></> : userInfo.isKordinator ? <h5 style={{textAlign:"center"}}>Lista kamova na kojima ste kordinator</h5>
@@ -203,8 +203,8 @@ navigate('/profil/update')
               camp.koordinatorId===userInfo._id ? 
 
               (
-                <div className="prijava" key={camp._id}>
-                <div className="RED">
+                <div style={{border:"1px solid black"}} className="prijava" key={camp._id}>
+                <div  className="RED">
                   <div className="kol3">
                    <h4 style={{textAlign:"center"}}>{camp.tip}</h4>
                <div className="centriraj"><Image className="slika" height="220rem"  width="85%"  src={camp.slika}/></div>
@@ -251,9 +251,9 @@ navigate('/profil/update')
 
       }
          
-             </Col>
+             </div>
              
-          </Row>
+          </div>
             
             
             
@@ -262,10 +262,10 @@ navigate('/profil/update')
             
             </> : <>
             
-              <Row style={{marginTop:"7rem"}}>
+              <div className="cont" style={{marginTop:"7rem"}}>
 
              
-           <Col className="prvi" md={3}>
+           <div className="leftrow" >
            {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader/>}
            <h3>{user.ime}</h3>
@@ -309,9 +309,9 @@ navigate('/profil/update')
 <Container className="centriraj">
            <Button className="dodaj" onClick={promeni}>Promeni</Button>
            </Container>
-           </Col>
+           </div>
 
-           <Col md={9} >
+           <div className="rightrow" >
              <h3 style={{textAlign:"center"}}>Kampovi</h3>
 
             
@@ -373,9 +373,9 @@ navigate('/profil/update')
             
               
               )}
-           </Col>
+           </div>
            
-        </Row>
+        </div>
             
             
             </>}

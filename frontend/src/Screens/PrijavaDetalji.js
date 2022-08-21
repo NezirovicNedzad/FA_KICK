@@ -14,7 +14,7 @@ import { listKorisniciPrijave } from "../actions/korisnikaction"
 import Paginate from '../components/Paginate';
 import SliderOcena from '../components/SliderOcena';
 import { DeletePrijava,prijavaKampoviSvaki } from '../actions/prijaveactions';
-
+import "./prijave.css"
 import { DELETE_OCENA_RESET } from '../constants/prijaveConstants';
 
 const PrijavaDetalji = () => {
@@ -121,7 +121,7 @@ useEffect (()=>{
           </div>
 
        <div className='RED'>
-         <div className='kol3'><p ><span className='datum'><span className="name">Datum pocetka:</span>{prijava.datum_pocetka}</span> <span className='datum2'><span className="name">Datum zavrsetka:</span>{prijava.datum_zavrsetka}</span> </p></div>
+         <div className='kol3'><p ><span className='datum'><span className="name">Datum trajanja:</span>{prijava.datum_pocetka}-{prijava.datum_zavrsetka}</span>  </p></div>
        
           
               </div>

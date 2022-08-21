@@ -9,6 +9,12 @@
   color: #e70b0b;
   font-weight: 500;
 }
+.leftrow h3{
+  text-align: center;
+  font-size: 1rem;
+  color: #e70b0b;
+  font-weight: 500;
+}
 .centriraj {
   display: flex;
   justify-content: center;
@@ -33,6 +39,7 @@
 }
 .drugi {
   margin-top: 7rem;
+  display: flex;
 }
 .dodaj:hover {
   background-color: black !important;
@@ -128,9 +135,7 @@ input#file-input + label i {
   transition: 0.3s all ease-in-out;
 }
 
-.RED {
-  display: flex;
-}
+
 
 .kol3 {
   flex: 1;
@@ -149,6 +154,9 @@ input#file-input + label i {
   flex: 1;
   padding: 2rem;
 }
+.flex97{
+  flex:3
+}
 
 .redovi {
   display: flex;
@@ -157,6 +165,51 @@ input#file-input + label i {
   padding: 2rem;
 }
 
+.cont{
+  display: flex;
+
+}
+.leftrow{
+flex: 1;
+padding: 1.2rem 2rem;
+border-right: 1px grey dotted;
+
+}
+.rightrow{
+  flex: 4;
+  
+}
+.prv{
+  display: flex;
+  padding: 1rem;
+}
+.leftcol{
+  flex: 1;
+}
+.rightcol{
+  flex: 3;
+}
+.right2col{
+  flex: 1;
+}
+.flex2{
+  display: flex;
+}
+.t33{
+flex:3;  
+border-right: 1px grey dotted;
+
+
+}
+.t34{
+  flex:2;
+}
+.flex3{
+  display: flex;
+}
+.red21{
+  flex: 1;
+}
 @media (max-width: 967px) {
   .RED {
     flex-direction: column;
@@ -164,9 +217,29 @@ input#file-input + label i {
   .text {
     margin: 2% 10% !important;
   }
+  .drugi{
+    flex-direction: column;
+  }
 }
 @media (max-width: 767px) {
   .redovi {
     flex-direction: column;
   }
+  .cont{
+    flex-direction: column;
+  }
+  .prv{
+    flex-direction: column;
+  }
+  .prv h3{
+    font-size: 0.9rem;
+  }
+  .leftrow{
+    border-right: none;
+  }
+  .flex2{
+    flex-direction: column;
+  }
+ 
 }
+

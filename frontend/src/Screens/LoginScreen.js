@@ -92,13 +92,14 @@ const navigate =useNavigate()
             <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
               Registruj se!
             </Link> </>)}
-            {count >=2 ?  <> <Link style={{marginLeft:"20%"}}  to={redirect ? `/forgotPassword?redirect=${redirect}` : '/forgotPassword'}>
-              Zaboravili ste password?
-            </Link> </> : <></>}
+          
           </Col>
+         
         </Row>
             </Form>
-            
+            {count >=2 ?  <> <Link style={{marginTop:"3rem"}}  to={redirect ? `/forgotPassword?redirect=${redirect}` : '/forgotPassword'}>
+              Zaboravili ste password?
+            </Link> </> : <></>}
         </FormCont>
     )
 }

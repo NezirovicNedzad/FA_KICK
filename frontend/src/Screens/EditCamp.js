@@ -139,9 +139,9 @@ const CampEditScreen = () => {
  
    
     return (
-        <Row className="drugi" >
+        <div className="drugi" >
             
-<Col className="kolone"  md={7}>
+<div className="kolone"  style={{flex:"7"}}>
          
            <h1 style={{color:'#e70b0b'}}>Uredi Kamp</h1>
            {loadingUpdate && <Loader/>}
@@ -251,9 +251,9 @@ const CampEditScreen = () => {
 
                    </Form>
                           }
-           </Col>
+           </div>
 
-           <Col className="kolone" md={5}>
+           <div style={{flex:"5"}} className="kolone" >
                 <h2 style={{color:'#e70b0b'}}>Lista kordinatora</h2>
                <p>Podseti se kvaliteta svakog koordinatora radi donošenja lakše odluke koji koordinator je adekvatniji izbor za novi kamp.</p> 
                {loadingKorindator ? <Loader></Loader> : errorKordinator ? <Message variant="danger">{errorKordinator}</Message> : (
@@ -288,9 +288,9 @@ const CampEditScreen = () => {
 
                </Table>
                )}
-           </Col>
+           </div>
            
-        </Row>
+        </div>
     )
 
 }

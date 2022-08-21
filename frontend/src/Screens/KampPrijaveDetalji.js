@@ -118,11 +118,11 @@ const detalji_kor=(id)=>{
 
   return <>
     <>
-        <Row style={{marginTop:"2.5rem",paddingTop:"1rem"}}>
+        <div className='flex2' style={{marginTop:"2.5rem",paddingTop:"1rem"}}>
         {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader/>}
              
-            <Col md={9} style={{borderRight:"1px dotted",marginBottom:"0.5rem",padding:"2.4rem"}} >
+            <div className='t33' style={{marginBottom:"0.5rem",padding:"2.4rem"}} >
         
             <Link to='/profil' style={{marginLeft:"4%"}} className='dodaj'>Vrati se</Link>
             <div style={{marginTop:"2rem"}}  className='RED'>
@@ -248,10 +248,10 @@ const detalji_kor=(id)=>{
                  
 
            
-            </Col>
+            </div>
             
 
-            <Col style={{paddingTop:"2.4rem"}} md={3}>
+            <div style={{paddingTop:"2.4rem"}} className="3t8">
            
             <h5>Opis posla</h5>
 
@@ -262,9 +262,9 @@ const detalji_kor=(id)=>{
                 ako pritisnete crveno dugme. </p>
 
 
-              </Col>
+              </div>
           
-    </Row>
+    </div>
   
    </>          
   </>;

@@ -6,6 +6,7 @@ import {Verify} from '../actions/korisnikaction'
 import Loader from "../components/Loader"
 import Message from "../components/Message"
 import { useNavigate } from "react-router-dom"
+import './profil.css'
 import { logout,deleteKorisnici} from '../actions/korisnikaction'
 
 const VerifyScreen = () => {
@@ -51,11 +52,11 @@ useEffect(()=>{
   return (
     <div style={{height:"50rem",marginTop:"7rem"}}>
 
-<Row>
+<div className="prv" >
 
 
-  <Col md={3}></Col>
-  <Col md={6}>
+  <div className="leftcol"></div>
+  <div className="rightcol">
   <div className="jumbotron novi"  style={{padding:"1rem"}}>
   
   <div className="centriraj">  <img className="img-fluid slika" width="210rem" alt="nEKATO" src="/images/logofa.png"/> </div>
@@ -93,12 +94,12 @@ useEffect(()=>{
            
             
        
-  </Col>
-  <Col md={3}>
+  </div>
+  <div className="right2col">
   <p>Ne želite prijavu trenutno sa ovim mailom?</p>
             <Button onClick={()=>logoutHandler()}>Otkaži sve</Button>
-  </Col>
-</Row>
+  </div>
+</div>
 
 
     </div>

@@ -105,10 +105,10 @@ const ResetPasswordScreen = () => {
      <>
      {invalidUser ? <div style={{textAlign:"center",marginTop:"4.7rem",height:"28rem",padding:"2rem"}}><h1>Reset Token Not Found</h1></div> : <>
      
-     <Row className="drugi" style={{height:"28rem",padding:"2rem"}} >
-           <Col  md={4}>
-</Col>          
-<Col md={4}>
+     <div className="drugi" style={{height:"28rem",padding:"2rem"}} >
+           <div className="red21">
+</div>          
+<div className="red21">
          
            <h1 style={{color:'#e70b0b'}}>Resetuj šifru</h1>
             {message && <Message variant='danger'>{message}</Message>}
@@ -140,12 +140,12 @@ const ResetPasswordScreen = () => {
             </Button>
 
                    </Form>
-           </Col>
+           </div>
 
-           <Col md={4}>
-           </Col>
+           <div className="red21">
+           </div>
            
-        </Row>
+        </div>
      </>}
 
      </>
