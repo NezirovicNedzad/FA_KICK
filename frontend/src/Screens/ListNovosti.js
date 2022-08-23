@@ -65,14 +65,14 @@ const ListNovosti = () => {
   return (
 
   
-  <Row style={{marginTop:"7rem",padding:"1rem"}}>
+  <div className="RED" style={{marginTop:"7rem",padding:"1rem"}}>
 
 
 {loadingDelete &&<Loader></Loader>}
     {errorDelete &&<Message variant="danger" >{errorDelete}</Message>}
 
-      <Col lg={2}></Col>
-      <Col style={{padding:"0.7rem"}}  lg={8}>
+      <div className="div2"></div>
+      <div style={{padding:"0.7rem"}}  className="div8">
   
   <div className="RED">
     <div className="kol3">
@@ -144,10 +144,10 @@ const ListNovosti = () => {
 
 
 )}
-</Col>
-<Col lg={2}>
-</Col>
-  </Row>
+</div>
+<div className="div2">
+</div>
+  </div>
   )
 };
 

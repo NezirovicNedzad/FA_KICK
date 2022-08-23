@@ -251,7 +251,7 @@ const detalji_kor=(id)=>{
             </div>
             
 
-            <div style={{paddingTop:"2.4rem"}} className="3t8">
+            <div style={{paddingTop:"2.4rem"}} className="div212">
            
             <h5>Opis posla</h5>
 

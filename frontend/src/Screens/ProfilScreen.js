@@ -92,9 +92,9 @@ navigate('/profil/update')
 
             <>
             {user.isAdmin ? <>
-              <Row style={{marginTop:"9rem"}}>
-                <Col></Col>
-                <Col>
+              <div className="RED" style={{marginTop:"9rem"}}>
+                <div className="col12"></div>
+                <div style={{padding:"1rem"}} className="col12">
                 
                 
             {loading ?  <Loader/> : error ? <Message variant='danger'>{error}</Message> : (<> <h3 style={{textAlign:"center"}}>{user.ime}</h3>
@@ -131,9 +131,9 @@ navigate('/profil/update')
             </>)}
       
                 
-                </Col>
-                <Col></Col>
-                </Row>
+                </div>
+                <div className="col12" ></div>
+                </div>
             
             
             </> : user.isKordinator ?<>

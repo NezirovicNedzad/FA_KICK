@@ -81,7 +81,7 @@ useEffect (()=>{
 
   return <>
     <>
-        <Row style={{marginTop:"4.5rem",paddingTop:"1rem"}}>
+        <div className='RED' style={{marginTop:"4.5rem",paddingTop:"1rem"}}>
        {loadingPrijava &&<Loader/>}
        {errorPrijava &&<Message variant="danger">{errorPrijava}</Message>}
              
@@ -331,7 +331,7 @@ useEffect (()=>{
           
                         </Col>
                     }
-    </Row>
+    </div>
   
    </>          
   </>;

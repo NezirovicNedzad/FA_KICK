@@ -147,7 +147,7 @@ input#file-input + label i {
 
 .kol3 {
   flex: 1;
-  justify-content: center;
+
   margin: 1rem 0;
 }
 
@@ -204,10 +204,26 @@ border-right: 1px grey dotted;
   display: flex;
 }
 .t33{
-flex:3;  
+flex:4;  
 border-right: 1px grey dotted;
 
+}
+.col12{
+  flex: 1;
+}
+.div2{
+  flex: 1;
+}
+.div8{
+  flex:8
+}
+.div212{
+  flex:1;
+  padding: 0.7rem;
+}
 
+.RED{
+  display:flex;
 }
 .t34{
   flex:2;

@@ -55,10 +55,10 @@ const ListaKorisnika = () => {
   }
 
   return (
-  <Row style={{marginTop:"7rem",padding:"1rem"}}>
+  <div className="RED" style={{marginTop:"7rem",padding:"1rem"}}>
 
-      <Col lg={2}></Col>
-      <Col style={{padding:"0.7rem"}}  lg={8}>
+      <div className="div2" ></div>
+      <div className="div8" style={{padding:"0.7rem"}}  >
   <h1>Korisnici</h1>
 
 {loading ? <Loader/> : error ? <Message variant='danger'>{error}</Message> :(
@@ -123,10 +123,10 @@ const ListaKorisnika = () => {
 
 )}
 <Paginate page={page} pages={pages} link='/admin/listakorisnika/page/'/>
-</Col>
-<Col lg={2}>
-</Col>
-  </Row>
+</div>
+<div className="div2" lg={2}>
+</div>
+  </div>
   )
 };
 

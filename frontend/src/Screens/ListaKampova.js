@@ -97,11 +97,21 @@ const ListaKampova = () => {
 
   return (
 <>
-    <Row  style={{marginTop:"7rem",padding:"1rem"}} className='align-items center'>
-        <Col>
+  
+      {loadingDelete &&<Loader></Loader>}
+      {errorDelete &&<Message variant="danger" >{errorDelete}</Message>}
+      {loadingCreate &&<Loader></Loader>}
+      {errorCreate &&<Message variant="danger" >{errorCreate}</Message>}
+  <div className="RED" style={{marginTop:"1.2rem",padding:"1rem"}}>
+
+ 
+ <div className="div2"></div>
+      <div className="div8" style={{padding:"0.7rem"}} >
+      <div  style={{marginTop:"7rem",padding:"1rem"}} className='RED'>
+        <div>
         <h1>Kampovi</h1>
-        </Col>
-        <Col className="text-right">
+        </div>
+        <div className="text-right">
      
           
         <Button style={{marginRight:"1rem"}} className="my-3" onClick={createCampHandler}>
@@ -110,16 +120,8 @@ const ListaKampova = () => {
 
         </Button>
 
-        </Col>
-      </Row>  
-      {loadingDelete &&<Loader></Loader>}
-      {errorDelete &&<Message variant="danger" >{errorDelete}</Message>}
-      {loadingCreate &&<Loader></Loader>}
-      {errorCreate &&<Message variant="danger" >{errorCreate}</Message>}
-  <Row style={{marginTop:"1.2rem",padding:"1rem"}}>
-
- 
-      <Col style={{padding:"0.7rem"}} >
+        </div>
+      </div>  
 {loading ? <Loader/> : error ? <Message variant='danger'>{error}</Message> :(
 
 
@@ -179,9 +181,9 @@ const ListaKampova = () => {
 
 
 )}
-</Col>
-
-  </Row>
+</div>
+<div className="div2"></div>
+  </div>
   
   
 </>
