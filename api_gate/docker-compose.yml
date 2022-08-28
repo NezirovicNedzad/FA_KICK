@@ -1,0 +1,42 @@
+version: '3.4'
+
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - data:/data/db
+  dockertest1:
+    image: dockertest1
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - "8010:8000"
+    volumes:
+      - .:/usr/src/app
+       - /usr/app/node_modules 
+    links:
+      - mongodb
+  backend2:
+    image: kampservices
+    build: 
+      context: ./kampoviService
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - "8011:8000"
+    volumes:
+      - ./kampoviService:/usr/src/app
+       - /usr/app/node_modules 
+        
+    links:
+      - mongodb
+  
+volumes:
+  
+  data:

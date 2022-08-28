@@ -1,0 +1,639 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+body {
+  overflow-x: hidden;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  color: black;
+}
+.bg-novi {
+  background: rgba(0, 0, 0, 0.9) !important;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.nav {
+  background: rgba(0, 0, 0, 0.9) !important;
+  color: white;
+  text-align: center !important;
+  padding: 0.7rem !important;
+}
+
+.nav:hover {
+  color: #e70b0b;
+}
+.nav i {
+  margin-top: 4px;
+  margin-right: 0.3rem;
+}
+.navbar-nav .dropdown-menu {
+  padding: 0;
+  background-color: black;
+  text-align: center !important;
+}
+.nav-link {
+  text-align: center;
+}
+
+span.navbar-toggle-icon {
+  color: white;
+}
+.sadrzaj h3 {
+  color: #e70b0b;
+}
+
+.navbar-dark .navbar-toggler {
+  border: none;
+}
+
+Nav button:focus {
+  outline: none;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #e70b0b;
+}
+.navbar-brand {
+  margin-left: 1rem;
+  margin-top: 0;
+}
+
+.menu-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn__burger {
+  width: 50px;
+  height: 6px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 6px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn__burger::before {
+  margin-left: -15px;
+  transform: translateY(-16px);
+}
+
+.menu-btn__burger::after {
+  transform: translateY(16px);
+  margin-left: -15px;
+}
+
+.menu-btn.open .menu-btn__burger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(35px, -35px);
+  background: #e70b0b;
+}
+
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(315deg) translate(35px, 35px);
+  background: #e70b0b;
+}
+.navbar-toggler {
+  background: transparent !important;
+  border: none;
+}
+
+.navbar-dark .navbar-toggler {
+  color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+img.d-block w-100 {
+  height: 70vh;
+}
+
+span.visually-hidden {
+  display: none;
+}
+
+.carousel-indicators .active {
+  background-color: #fcffe9;
+}
+
+.carousel-indicators :focus {
+  outline: none !important;
+}
+
+.carousel-indicators button {
+  box-sizing: content-box;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  width: 4%;
+  height: 3px;
+
+  height: 3px;
+  margin-right: 3px;
+  margin-left: 3px;
+  margin-bottom: 14px;
+
+  background-color: #fff;
+  background-clip: padding-box;
+  border: none;
+  opacity: 0.5;
+  transition: opacity 0.6s ease;
+}
+.w-100 {
+  height: 100vh;
+}
+.carousel-caption {
+  position: absolute;
+
+  text-transform: uppercase;
+  width: 100%;
+  right: 0;
+  left: 0;
+}
+.carousel-caption h1 {
+  font-size: 4.2 rem;
+  font-weight: 700;
+  color: white !important;
+  letter-spacing: 0.3 rem;
+  text-shadow: 0.1rem, 0.1rem, 0.8rem black;
+  padding-bottom: 1rem;
+}
+.carousel-caption h3 {
+  font-size: 2 rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3 rem !important;
+  color: white;
+  text-shadow: 0.1rem, 0.1rem, 0.5rem black;
+  padding-bottom: 1rem;
+}
+
+.btn-lg {
+  border-radius: 7px !important;
+  font-size: 1rem;
+  padding: 8px !important;
+  letter-spacing: 0.08rem;
+  background-color: #e70b0b;
+  border: none;
+  transition: 0.5s all ease-in-out;
+}
+.sadrzaj img {
+  margin-left: 1rem;
+}
+
+/*---Media za responsive*/
+@media (max-width: 767px) {
+  .carousel-caption h1 {
+    font-size: 1.3rem;
+  }
+  .myrow {
+    flex-direction: column !important;
+  }
+  .sidebar {
+    padding: 0.7rem 1.2rem !important;
+  }
+
+  .carousel-caption h3 {
+    font-size: 0.9rem;
+
+    padding-bottom: 0.5rem;
+  }
+  .sadrzaj {
+    padding: 0 2rem !important;
+  }
+
+  .btn-lg {
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+  }
+  
+  .novi2 {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .uzslike {
+    margin-top: 25px !important;
+    margin-bottom: 25px !important;
+  }
+  .datum {
+    text-align: center !important;
+  }
+  .datum2 {
+    text-align: center !important;
+    margin-left: 30% !important;
+  }
+  .kol32{
+    max-width: 100%!important;
+  }
+}
+
+@media (max-width: 615px) {
+  .donji {
+    text-align: center !important;
+
+    flex-direction: column;
+  }
+
+  .text-center {
+    margin: 0.6rem 0;
+    text-align: center !important;
+  }
+  .text-right {
+    margin: 0.3rem 0;
+    text-align: center !important;
+  }
+  .text-center {
+    margin: 0.6rem 0;
+    text-align: center !important;
+  }
+  #d22{
+    padding: 0.6rem ;
+    margin: 0.6rem;
+
+  }
+}
+
+@media (max-width: 505px) {
+  .jumbotron.img.img-fluid.slika {
+    width: 9rem;
+  }
+  .jumbotron.img.img-fluid.slika2 {
+    width: 8rem;
+  }
+ 
+}
+div.novi.container-fluid {
+  background-color: #e70b0b;
+  box-shadow: rgba(231, 226, 226, 0.9);
+  height: auto;
+  width: 100%;
+}
+.novi2 {
+  margin-top: 40px;
+  display: flex;
+
+  flex-direction: row;
+  justify-content: center;
+  padding: 15px;
+}
+
+.uzslike {
+  margin-left: 25px;
+
+  margin-right: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.novi h4 {
+  color: white;
+  text-align: center;
+  text-shadow: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  padding: 10px;
+}
+
+.donji {
+  display: flex !important;
+  background-color: black !important;
+  color: white;
+  padding: 15px;
+}
+.donji a {
+  text-decoration: none;
+  color: white;
+}
+
+.text1 {
+  flex: 1;
+}
+
+.text-center {
+  flex: 1;
+}
+.text-right {
+  flex: 1;
+}
+
+.stil {
+  padding: 15px;
+
+  text-align: center;
+}
+
+.img-circle {
+  border-radius: 8px !important;
+
+  text-align: center;
+}
+
+.stil img {
+  height: 300px;
+  width: 90%;
+}
+
+#preporuke .stil p {
+  font-family: 'Lato';
+  font-size: 15px;
+  color: white;
+  font-weight: 300;
+  margin-top: 15px;
+}
+
+.stil p {
+  color: white;
+}
+
+.imepreporuke p {
+  margin: 0 !important;
+}
+.imepreporuke {
+  display: block;
+  width: fit-content;
+  background-color: #e70b0b;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 7px;
+  text-align: center;
+  margin: -17px auto 0;
+  color: #fff;
+}
+.item p {
+  color: white;
+  margin-top: 20px;
+}
+
+.imepreporuke a {
+  text-decoration: none;
+
+  color: white;
+}
+.imepreporuke a:hover {
+  color: White !important;
+}
+
+.imepreporuke:hover {
+  background-color: black;
+  color: white !important;
+
+  transition: 0.4s all ease-in-out;
+}
+
+.item {
+  text-align: center;
+
+  margin-top: 7px;
+  transition: all 0.3s ease-in-out;
+}
+.owl-carousel span {
+  font-size: 25px;
+}
+#preporuke {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.sredina {
+  display: flex !important;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.sektor h4 {
+  color: #fff;
+  text-align: center;
+
+  text-transform: uppercase;
+}
+
+.sektor {
+  padding-top: 15px;
+
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.slick-dots {
+  margin-bottom: 20px !important;
+}
+
+.slick-dots li button:before {
+  color: White !important;
+  margin-top: 5px;
+}
+.jumbotron.novi {
+  background-color: white;
+}
+
+.sidebar {
+  border-left: 1px dotted grey;
+  border-spacing: 1px;
+}
+
+.sidebar a {
+  text-decoration: none;
+}
+.sidebar p {
+  margin-left: 17px;
+}
+
+.sidebar h3 {
+  color: #e70b0b;
+  font-family: 'Lato';
+  margin-left: 15px;
+}
+
+.sidebar {
+  letter-spacing: 1px;
+  padding-left: 25px;
+}
+.sidebar li a {
+  text-decoration: none;
+  padding: 5px;
+
+  color: black;
+}
+.sidebar li a:hover {
+  transition: 0.4s all ease-in-out;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+}
+
+.sidebar li {
+  margin: 5px;
+}
+
+.sadrzaj li {
+  border-bottom: 1px solid grey;
+  margin: 4px;
+  background-color: dimgrey !important;
+}
+.sidebar ul {
+  list-style-type: none;
+
+  padding: 10px;
+}
+
+.sadrzaj p {
+  padding: 5px;
+  letter-spacing: 1px;
+}
+
+@media (min-width: 767px) {
+  .sadrzaj {
+    padding: 0 2.6rem !important;
+  }
+  .jumbotron h3 {
+    font-size: 1.4rem;
+  }
+ 
+}
+
+.card {
+  border: none !important;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+.card-body {
+  padding: 14px;
+}
+.card a {
+  display: block;
+  width: fit-content;
+  border-radius: 7px;
+  text-decoration: none;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 40px;
+  background-color: #e70b0b;
+}
+
+.card a:hover {
+  background-color: black;
+  border-bottom: none;
+  transition: 0.5s all ease-in-out;
+}
+
+.imepreporuke a {
+  color: white;
+  text-decoration: none;
+}
+.imepreporuke a:hover {
+  color: red;
+}
+
+.myrow {
+  display: flex;
+}
+.card img {
+  border-radius: 0.5rem;
+}
+
+.sadrzaj {
+  flex: 2;
+}
+.sidebar {
+  flex: 1;
+}
+.sidebar h4 {
+  color: red;
+  margin-left: 0.5rem;
+}
+.top {
+  text-align: center !important;
+  margin-left: 0.9rem;
+}
+.rating i {
+  font-size: 1.4rem;
+}
+
+.canvas-container {
+  height: 60vh;
+  padding: 1rem;
+}
+
+canvas {
+  width: 100% !important;
+}
+
+.datum {
+  text-align: left;
+}
+.datum2 {
+  margin-left: 50%;
+}
+.pretrazi {
+  outline: #e70b0b !important;
+  padding: 4px;
+  border: 2px solid #e70b0b;
+  color: #e70b0b;
+}
+
+#izbr2{
+  font-size: 1.3rem;
+ padding-left: 0.7rem;
+ padding-right: 0.7rem;
+ border:none;
+  background-color: black;
+}
+
+#izbr2:hover{
+  background-color: white;
+  transition: 0.4s all ease-in-out;
+  border:none;
+}
+
+.slick-next{
+  right: 25px;
+}
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Nunito", sans-serif;
+}
+
+.App .openModalBtn {
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  background-color: cornflowerblue;
+  color: white;
+  cursor: pointer;
+}
+body {
+  padding: 0;
+  margin: 0;
+}

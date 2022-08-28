@@ -382,6 +382,7 @@ const getkorisnickiProfil= asyncHandler(async(req,res) =>{
 //@desc update korisnicki profil kad je ulogovona
 //@route put/api/korisnici
 //access Private
+
 const updatekorisnik= asyncHandler(async(req,res) =>{
 
   const user=await Korisnik.findById(req.user._id)
@@ -412,7 +413,7 @@ const updatekorisnik= asyncHandler(async(req,res) =>{
       pozicija:user.pozicija,
       licenca:user.licenca,
       brgod:user.brgod,
-    
+      verified:true,
       isAdmin:user.isAdmin,
       isKordinator:user.isKordinator,
       token:generateToken(user._id)

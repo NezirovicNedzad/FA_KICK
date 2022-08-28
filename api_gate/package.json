@@ -4,7 +4,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon app.js",
+    "server":"npm run server --prefix kampoviService",
+    "front":"npm start --prefix  frontend",
+    "docker":"concurrently \"npm start\"  \"npm run server\"   \"npm run front\" \"docker compose up\""
   },
   "keywords": [],
   "author": "",
@@ -14,6 +17,7 @@
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "common": "^0.2.5",
+    "concurrently": "^7.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",

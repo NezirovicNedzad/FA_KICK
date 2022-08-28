@@ -1,0 +1,275 @@
+.prvi {
+  padding: 1.2rem 2rem;
+  border-right: 1px grey dotted;
+}
+
+.prvi h3 {
+  text-align: center;
+  font-size: 1rem;
+  color: #e70b0b;
+  font-weight: 500;
+}
+.leftrow h3{
+  text-align: center;
+  font-size: 1rem;
+  color: #e70b0b;
+  font-weight: 500;
+}
+.centriraj {
+  display: flex;
+  justify-content: center;
+  padding: 0.6rem 0;
+}
+.centriraj3 {
+  display: flex;
+  justify-content: center;
+  padding: 0.6rem 0;
+}
+
+.dodaj {
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  background-color: #e70b0b;
+  color: white;
+  letter-spacing: 0.1rem;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+.drugi {
+  margin-top: 7rem;
+  display: flex;
+}
+.dodaj:hover {
+  background-color: black !important;
+  transition: 0.4s all ease-in-out !important;
+  color: white !important;
+}
+.flex21{
+  display: flex;
+}
+
+.dod2{
+  flex: 9;
+  border-right: 1px grey dotted;
+}
+
+.podaci {
+  padding: 0.5rem 1rem;
+  justify-content: center;
+  border-bottom: 1px dotted;
+}
+.name {
+  color: #e70b0b;
+  font-weight: 700;
+}
+
+.srednji {
+  padding: 1.2rem;
+  padding-right: 4rem;
+}
+.slika {
+  border-radius: 0.5rem;
+}
+.text {
+  justify-content: center;
+  display: flex;
+  margin: 1rem;
+}
+
+.pravi {
+  padding: 1.6rem;
+  margin-top: 1rem;
+}
+
+.kolone {
+  padding: 1.4rem 4.5rem;
+}
+
+.form-control button {
+  background-color: red !important;
+}
+input[type='file' i] {
+  display: none;
+}
+
+input#file-input + label {
+  background-color: #e70b0b;
+  border: none;
+  margin-top: 0.3rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 0.4rem;
+  padding: 0.3rem;
+}
+input#file-input + label:hover {
+  box-shadow: 0 0 10px #070707;
+  cursor: pointer;
+  background-color: black;
+  transition: 0.3s all ease-in-out;
+}
+
+input#file-input + label i {
+  font-size: 0.9rem;
+}
+.dugme {
+  background-color: #e70b0b;
+  border: none;
+  margin-top: 0.5rem;
+  color: white;
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  text-transform: inherit;
+  letter-spacing: 0.1rem;
+  font-weight: 700;
+}
+.dugme:hover {
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+  color: white;
+  text-decoration: none;
+}
+.prijava {
+  padding: 0.4rem;
+  margin: 3rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.prijava:hover {
+  box-shadow: 0 0 10px #070707;
+  transition: 0.3s all ease-in-out;
+}
+
+
+
+.kol3 {
+  flex: 1;
+
+  margin: 1rem 0;
+}
+
+.text {
+  display: block;
+  margin-top: 20%;
+}
+.text p {
+  border-bottom: 1px dotted black;
+}
+.kol32 {
+  flex: 1;
+  padding: 2rem;
+}
+.flex97{
+  flex:3
+}
+
+.redovi {
+  display: flex;
+}
+.glavni-deo {
+  padding: 2rem;
+}
+
+.cont{
+  display: flex;
+
+}
+.leftrow{
+flex: 1;
+padding: 1.2rem 2rem;
+border-right: 1px grey dotted;
+
+}
+.rightrow{
+  flex: 4;
+  
+}
+.prv{
+  display: flex;
+  padding: 1rem;
+}
+.leftcol{
+  flex: 1;
+}
+.rightcol{
+  flex: 3;
+}
+.right2col{
+  flex: 1;
+}
+.flex2{
+  display: flex;
+}
+.t33{
+flex:4;  
+border-right: 1px grey dotted;
+
+}
+.col12{
+  flex: 1;
+}
+.div2{
+  flex: 1;
+}
+.div8{
+  flex:8
+}
+.div212{
+  flex:1;
+  padding: 0.7rem;
+}
+
+.RED{
+  display:flex;
+}
+.t34{
+  flex:2;
+}
+.flex3{
+  display: flex;
+}
+.red21{
+  flex: 1;
+}
+@media (max-width: 967px) {
+  .RED {
+    flex-direction: column;
+  }
+  .text {
+    margin: 2% 10% !important;
+  }
+  .drugi{
+    flex-direction: column;
+  }
+}
+@media (max-width: 767px) {
+  .redovi {
+    flex-direction: column;
+  }
+  .flex21{
+    flex-direction: column;
+  }
+  .dod2{
+    border-right: none!important;
+  }
+  .cont{
+    flex-direction: column;
+  }
+  .prv{
+    flex-direction: column;
+  }
+  .prv h3{
+    font-size: 0.9rem;
+  }
+  .leftrow{
+    border-right: none;
+  }
+  .flex2{
+    flex-direction: column;
+  }
+ 
+}
+
