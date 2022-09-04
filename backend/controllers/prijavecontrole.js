@@ -105,7 +105,7 @@ const createPrijave= asyncHandler(async(req,res)=>{
     const DeletePrijave=asyncHandler(async(req,res)=>{
   
             const prijava=await Prijave.findById(req.params.id)
-          Prijave.f
+        
             if(prijava)
             {
           await prijava.remove()
@@ -141,6 +141,15 @@ const prijava= await Prijave.findById(req.params.id)
           text,
           trening
 
+       }
+
+       if(taktika==='' || tehnika==='' || fizika==='' || text==='' || trening==='')
+       {
+        throw new Error("Popunite sva polja")
+       }
+       if((taktika<0 && taktika<11)  || (tehnika<0 && tehnika<11)  || (fizika<0 && fizika<11) )
+       {
+        throw new Error("Ocene moraju biti u domenu 0-10");
        }
 
        prijava.ocene.push(ocena)

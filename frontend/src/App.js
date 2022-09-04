@@ -22,7 +22,10 @@ import OceniScreen from './Screens/OceniScreen'
 import ForgetScreen from './Screens/ForgetPassScreen';
 import ResetPasswordScreen from './Screens/ResetPaswordScreen';
 import Objekti from './Screens/Objekti';
-
+import Sponzori from './Screens/Sponzori';
+import Kontakt from './Screens/Kontakt';
+import Kovid from './Screens/Kovid';
+import Poreklo from './Screens/Poreklo';
 const App =() => {
   return (
     <Router>
@@ -75,7 +78,10 @@ const App =() => {
       <Route path='/kamp/prijave/:id/ocene' element={<OceniScreen/>}/>
       <Route path='/forgotPassword' element={<ForgetScreen></ForgetScreen>}></Route>
       <Route path='/login/reset-password' element={<ResetPasswordScreen></ResetPasswordScreen>} />
-      
+      <Route path='/sponzori' element={<Sponzori/>}/>
+      <Route path='/kontakt' element={<Kontakt/>}/>
+      <Route path='/kovid' element={<Kovid/>}/>
+      <Route path='/poreklo' element={<Poreklo/>}/>
    </Routes>
     </main>
     <Footer/>

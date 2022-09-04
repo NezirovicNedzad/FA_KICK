@@ -108,23 +108,23 @@ prethodno navedene kategorije.
 
   <li>
     <i className="fas fa-caret-right"></i>
-    <Link to="/">Nase poreklo</Link>
+    <Link to="/poreklo">Nase poreklo</Link>
   </li>
   <li>
     <i className="fas fa-caret-right"></i>
-    <Link to="/">Kontakt</Link>
+    <Link to="/kontakt">Kontakt</Link>
   </li>
   <li>
     <i className="fas fa-caret-right"></i>
-    <Link to='/'>Naši sponzori</Link>
+    <Link to='/sponzori'>Naši sponzori</Link>
   </li>
   <li>
     <i className="fas fa-caret-right"></i>
-    <Link to='/'>Poseti naše trenazne objekte</Link>
+    <Link to='/objekti'>Poseti naše trenazne objekte</Link>
   </li>
   <li>
     <i className="fas fa-caret-right"></i>
-    <Link to='/'>Kovid protokoli</Link>
+    <Link to='/kovid'>Kovid protokoli</Link>
   </li>
 
  </ul>

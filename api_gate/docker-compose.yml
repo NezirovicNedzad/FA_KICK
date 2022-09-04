@@ -29,7 +29,7 @@ services:
     environment:
       NODE_ENV: production
     ports:
-      - "8011:8000"
+      - "8011:8011"
     volumes:
       - ./kampoviService:/usr/src/app
        - /usr/app/node_modules 

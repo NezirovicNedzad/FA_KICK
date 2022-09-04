@@ -223,6 +223,9 @@ span.visually-hidden {
   .sadrzaj {
     padding: 0 2rem !important;
   }
+  .sponzor{
+    flex-direction: column;
+  }
 
   .btn-lg {
     font-size: 0.9rem;
@@ -491,7 +494,7 @@ div.novi.container-fluid {
 .sadrzaj li {
   border-bottom: 1px solid grey;
   margin: 4px;
-  background-color: dimgrey !important;
+  background-color: rgb(204, 203, 203) !important;
 }
 .sidebar ul {
   list-style-type: none;
@@ -636,4 +639,126 @@ canvas {
 body {
   padding: 0;
   margin: 0;
+}
+
+.sponzor {
+  display: flex;
+}
+.column {
+  flex: 1;
+}
+.card.sponz {
+  background-color: lightgray;
+  padding: 0.5rem;
+  border-radius: 7px !important;
+}
+
+.card.sponz:hover {
+  box-shadow: 0 0 1.1rem rgba(0, 0, 0, 0.9);
+  transition: 0.4s all ease-in-out;
+}
+
+.about-icon {
+  border-radius: 7px;
+  background-color: black;
+  padding: 1.9rem;
+  flex: 1;
+  margin: 0.7rem;
+  text-align: center;
+  color: white;
+  font-size: 0.6rem !important;
+}
+
+.about-icon i {
+  color: red;
+}
+
+.fa-phone:before {
+  color: green;
+}
+
+.about-icon:hover {
+  box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.9);
+  transition: 0.4s all ease-in-out;
+}
+
+.row-novi {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+}
+
+.card-body {
+  padding: 14px;
+}
+
+.card.sponz {
+  background-color: lightgray;
+  padding: 0.5rem;
+  border-radius: 7px !important;
+}
+
+.card.sponz:hover {
+  box-shadow: 0 0 1.1rem rgba(0, 0, 0, 0.9);
+  transition: 0.4s all ease-in-out;
+}
+
+.sponzor img{
+  margin-left: 0!important;
+}
+
+.about-icon {
+  border-radius: 7px;
+  background-color: black;
+  padding: 1.9rem;
+  flex: 1;
+  margin: 0.7rem;
+  text-align: center;
+  color: white!important;
+  font-size: 0.6rem !important;
+}
+
+.about-icon i {
+  color: red;
+}
+
+.fa-phone:before {
+  color: green;
+}
+
+.about-icon:hover {
+  box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.9);
+  transition: 0.4s all ease-in-out;
+}
+
+.row-novi {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+}
+.ikonica {
+  text-align: center;
+  padding: 0.4rem;
+  width: auto;
+  font-size: 00.2rem;
+}
+
+.about-icon i {
+  font-size: 3.2rem;
+  margin: 1rem 0rem;
+}
+.about-icon h2 {
+  font-size: 1.1 rem !important;
+  color:white;
+}
+.about-icon h3{
+  color:white;
+  font-size: 1.3rem;
+}
+
+.about-icon h4{
+  color:white;
+  font-size: 1rem;
 }

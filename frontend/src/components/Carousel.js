@@ -15,6 +15,10 @@ const Karousel = () => {
   const objekti=()=>{
     navigate("/objekti")
   }
+  const linkuj = ()=>{
+    navigate("/novosti/6201da499a3df197eee4c8de")
+
+  }
     return (
         <Carousel fade>
         <Carousel.Item>
@@ -63,7 +67,7 @@ const Karousel = () => {
           <Carousel.Caption>
             <h1>Pogledajte potpise naših bivših članova!</h1>
             <h3>Kratke informacije o ugovorima naših biših studenta</h3>
-            <Button type='button'className='btn-lg'>
+            <Button onClick={()=>linkuj()} type='button'className='btn-lg'>
                  Pogledaj!
 
             </Button>

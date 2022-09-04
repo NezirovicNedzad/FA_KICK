@@ -121,7 +121,7 @@ useEffect (()=>{
           </div>
 
        <div className='RED'>
-         <div className='kol3'><p ><span className='datum'><span className="name">Datum trajanja:</span>{prijava.datum_pocetka}-{prijava.datum_zavrsetka}</span>  </p></div>
+         <div style={{display:'flex',justifyContent:"center"}} className='kol3'><p ><span className='datum'><span className="name">Datum trajanja:</span><span style={{marginRight:"0.7rem"}}>{prijava.datum_pocetka}</span>-<span style={{marginLeft:"0.7rem"}}>{prijava.datum_zavrsetka}</span></span>  </p></div>
        
           
               </div>

@@ -56,7 +56,7 @@ const OceniScreen = () => {
     }
   return (
     <>
-    <Row style={{marginTop:"4.5rem",paddingTop:"2rem"}}>
+    <Row style={{marginTop:"5.5rem",paddingTop:"2rem"}}>
         <Col md={4}>
         <Button onClick={()=>izvrsi()} style={{marginLeft:"4%"}} className='dodaj'>Vrati se</Button>
         </Col>
