@@ -8,7 +8,7 @@ async function testPrijave(){
 
   let starePrijave = 0;
   let novePrijave = 0;
-  await driver.get("http://localhost:3000/");
+  await driver.get("https://fa-kickapp.herokuapp.com/");
  
   await driver.findElement(By.name("prijavi")).click();
   await driver.sleep(2000);

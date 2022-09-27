@@ -250,6 +250,13 @@ span.visually-hidden {
   .kol32{
     max-width: 100%!important;
   }
+
+  #formakontrol{
+    width: 100%!important;
+  }
+  #id78{
+    margin-bottom: 1rem;
+  }
 }
 
 @media (max-width: 615px) {
@@ -514,6 +521,7 @@ div.novi.container-fluid {
   .jumbotron h3 {
     font-size: 1.4rem;
   }
+  
  
 }
 
@@ -761,4 +769,8 @@ body {
 .about-icon h4{
   color:white;
   font-size: 1rem;
+}
+
+#formakontrol{
+  width:"70%;"
 }

@@ -60,4 +60,4 @@ app.use(errorHandler)
 
 
 
-app.listen(8000,console.log("Gateway je spreman i ceka zahteve na portu 8000!"));
+app.listen(8000);

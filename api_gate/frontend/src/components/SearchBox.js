@@ -2,56 +2,90 @@ import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import {Form,Button} from 'react-bootstrap'
 
-
+import './menu.css'
 
 
         
-const SearchBox = () => {
+const SearchBox = ( ) => {
     
 
 
     const navigate=useNavigate()
 
-
+    const [kordinator, setKordinator] = useState('');
     const [keyword,setKeyword]=useState('')
 
 
-    function scrollToBootom() {
 
-     window.scrollTo({top:document.documentElement.scrollHeight,behavior:"smooth"})
-
-    }
+    
     const submitHandler= (e)=>{
         e.preventDefault()
-        if(keyword.trim())
+      
+  
+         
+        if(keyword.trim()!=='' || kordinator!=='')
         {
-         navigate(`/search/${keyword}`)
+          if(kordinator==='' && keyword!==''){
+            navigate(`/admin/listakorisnika/search2/${keyword}`);
+           }
+          else if(kordinator==='kordinator' && keyword==='' )
+          {
+            navigate(`/admin/listakorisnika/search/${kordinator}`)
+            
+          }
+         
+          else if (kordinator==='kordinator' && keyword!=='')
+          {
+            navigate(`/admin/listakorisnika/search/${keyword}/${kordinator}`)
+          }
+          
+          
         
          setKeyword('')
           
-          
+      
 
         }
         else{
-            navigate('/')
+            navigate('/admin/listakorisnika')
           
         }
-        scrollToBootom()
+     
     }
 
+
+    const dodaj  =()=>{
+      if(kordinator==='')
+      {
+        setKordinator('kordinator')
+      }
+      else
+      {
+        setKordinator('');
+      }
+    }
   return (
     <>
     <Form onSubmit={submitHandler} >
-        <div  className='RED'>
+        <div  style={{margin:"1rem",justifyContent:"right",}} className='RED'>
+        <p id='kor' style={{margin:"1rem 0rem",textAlign:"center"}}>Kordinatori</p>
+        <input id='id78' style={{marginRight:"1rem",marginLeft:"1rem"}} value={kordinator} onChange={()=>(
 
-        <Form.Control type="text" name="q"
-        onChange={(e)=>setKeyword(e.target.value)}
-        placeholder="Pretraži kampove.."
+            dodaj()
+
+        )} type="checkbox" />
+        
+        <Form.Control   type="text" name="q"
+       style={{width:"70%"}}
+       id='formakontrol'
+      
+       onChange={(e)=>setKeyword(e.target.value)}
+        placeholder="Pretraži korisnike.."
         
         
         ></Form.Control>
    
-      <Button type="submit"  className="pretrazi">Pretraži</Button>    
+      <Button  style={{padding:"0.5rem",margin:"0 0.4rem"}} type="submit"  className="pretrazi">Pretraži</Button>    
        
         </div>
 

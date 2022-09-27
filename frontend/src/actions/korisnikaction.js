@@ -381,7 +381,7 @@ export const listKordinatori =()=>async(dispatch)=>{
 
 
 
-export const listKorisnici = (pageNumber='')=>async(dispatch,getState)=>{
+export const listKorisnici = (keyword='',pageNumber='',kordinator='')=>async(dispatch,getState)=>{
    
    
     try {
@@ -398,7 +398,7 @@ export const listKorisnici = (pageNumber='')=>async(dispatch,getState)=>{
             }
         }
     
-        const {data}=await axios.get(`/api/korisnici?pageNumber=${pageNumber}`,config)
+        const {data}=await axios.get(`/api/korisnici?keyword=${keyword}&pageNumber=${pageNumber}&kordinator=${kordinator}`,config)
         
     
         dispatch({

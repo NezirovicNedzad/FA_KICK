@@ -8,6 +8,7 @@ import nodemailer from "nodemailer"
 import asyncHandler from "express-async-handler"
 import { generateOTP,genereatePasswordResetTemplate,genereateEmailTemplate, plainEmailTemplate } from "../utils/mail.js"
 import { createRandomBytes } from "../utils/forgetpassword.js"
+import { TRUE } from "node-sass"
 
 
 const authkorisnik=asyncHandler(async(req,res)=>{
@@ -488,15 +489,46 @@ const getKorisnici= asyncHandler(async(req,res) =>{
 
   const pageSize=6
   const page=Number(req.query.pageNumber) || 1
+  const kordinator=req.query.kordinator
+  const keyword=(req.query.keyword!=='' && kordinator!=='') ?  
+     {
+      $and:[
 
-  
-  const count =await Korisnik.countDocuments()
-  const users=await Korisnik.find({}).limit(pageSize).skip(pageSize*(page-1))
+    {
+      isKordinator:true
+    },
+    {
+    ime:{
+
+        
+      $regex:req.query.keyword,
+      $options:'i'
+   }
+  }
+
+
+
+      ]
+     }:(req.query.keyword==='' && kordinator!=='') ?
+     {isKordinator:true}:
+     (req.query.keyword!=='' && kordinator==='')?
+     { ime:{
+
+        
+      $regex:req.query.keyword,
+      $options:'i'
+   }
+
+     }:{
+      
+     }
+  const count =await Korisnik.countDocuments({...keyword})
+  const users=await Korisnik.find({...keyword}).limit(pageSize).skip(pageSize*(page-1))
   
 
   
      
-res.json({users,page,pages:Math.ceil(count/pageSize)})
+res.json({users,page,pages:Math.ceil(count/pageSize),keyword})
 
  
 
@@ -506,13 +538,13 @@ res.json({users,page,pages:Math.ceil(count/pageSize)})
 //access private admin
 const getKorisnicizaPrijave=asyncHandler(async(req,res) =>{
 
-  const count =await Korisnik.countDocuments()
+
   const users=await Korisnik.find({})
   
 
   
      
-res.json({users,count})
+res.json({users})
 
  
 

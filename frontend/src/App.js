@@ -54,6 +54,11 @@ const App =() => {
       <Route path='/login/verify-email'  element={<VerifyScreen/>}/>
       <Route path='/' element={<Onama/>} exact/>
       <Route path='/admin/listakorisnika/page/:pageNumber' element={<ListaKorisnika/>} />
+      <Route path='/admin/listakorisnika/search/:keyword/:kordinator/' element={<ListaKorisnika/>} />
+      <Route path='/admin/listakorisnika/search2/:keyword'element={<ListaKorisnika/>} />
+      <Route path='/admin/listakorisnika/search/:kordinator/' element={<ListaKorisnika/>} />
+   
+      <Route path='/admin/listakorisnika/search/:keyword/page/:pageNumber' element={<ListaKorisnika/>} />
       <Route path='/search/:vrsta1' element={<Onama/>} exact/>
       <Route path='/search2/:vrsta1/:vrsta2' element={<Onama/>} exact/>
       <Route path='/searchmin/:minCena' element={<Onama/>} exact/>
@@ -82,6 +87,7 @@ const App =() => {
       <Route path='/kontakt' element={<Kontakt/>}/>
       <Route path='/kovid' element={<Kovid/>}/>
       <Route path='/poreklo' element={<Poreklo/>}/>
+      
    </Routes>
     </main>
     <Footer/>

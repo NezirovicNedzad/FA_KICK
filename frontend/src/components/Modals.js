@@ -1,13 +1,13 @@
 
-import React ,{useEffect,useState}from "react";
+import React ,{useState}from "react";
 import { useNavigate,useParams } from 'react-router-dom'
 import './modal.css'
-import SearchBox from './SearchBox'
 
 
 
 
-const Modals = ({closeModal,tipovi,cene}) => {
+
+const Modals = ({closeModal,tipovi}) => {
 
 
 

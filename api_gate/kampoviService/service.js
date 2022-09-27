@@ -25,4 +25,4 @@ app.use('/', kamproute)
 app.use(notFound);
 app.use(errorHandler);
 
-app.listen(8001, console.log("Service is running on 8001 port!"));
+app.listen(8001, );

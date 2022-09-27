@@ -11,7 +11,6 @@ import { prijavaByIdReducer, prijaveKreirajReducer,prijaveListReducer,prijaveDel
 
 const reducer=combineReducers({
 
-
 campList:campListReducers,
 campDetails:campDetailsReducers,
 campDelete:campDeleteReducer,

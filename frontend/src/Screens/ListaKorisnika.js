@@ -8,6 +8,7 @@ import { useNavigate,useParams } from "react-router"
 import Loader from '../components/Loader'
 import { listKorisnici,deleteKorisnici } from "../actions/korisnikaction"
 import Paginate from "../components/Paginate"
+import SearchBox from "../components/SearchBox"
 
 
 const ListaKorisnika = () => {
@@ -16,11 +17,12 @@ const ListaKorisnika = () => {
   const  params=useParams()
    const pageNumber=params.pageNumber
     const dispatch=useDispatch()
-
+     const keyword=params.keyword;
     const korisniciLista=useSelector(state=>state.korisniciLista)
     const {loading,error,korisnici,page,pages}=korisniciLista
 
-
+    const kord=[];
+   const kordinator=params.kordinator
 
     const login=useSelector(state=>state.korisnickiLogin)
     const {userInfo}=login
@@ -29,12 +31,14 @@ const ListaKorisnika = () => {
     const {success:successDelete}=obrisiKorisnika
 
     const navigate=useNavigate()
-
+  const novi=[];
     useEffect(()=>{
 
      if(userInfo && userInfo.isAdmin)
      {
-        dispatch(listKorisnici(pageNumber))}
+        dispatch(listKorisnici(keyword,pageNumber,kordinator))
+      
+      }
      else
      {
 
@@ -60,7 +64,7 @@ const ListaKorisnika = () => {
       <div className="div2" ></div>
       <div className="div8" style={{padding:"0.7rem"}}  >
   <h1>Korisnici</h1>
-
+ <SearchBox />
 {loading ? <Loader/> : error ? <Message variant='danger'>{error}</Message> :(
 
 
@@ -69,10 +73,10 @@ const ListaKorisnika = () => {
 
     <thead>
         <tr>
-            <th>ID</th>
+            
             <th>Ime</th>
             <th>Email</th>
-            <th>Admin</th>
+            
             <th>Kordinator</th>
             <th></th>
 
@@ -86,14 +90,10 @@ const ListaKorisnika = () => {
 
 
 <tr key={korisnik._id}>
-    <td>{korisnik._id}</td>
+    
     <td>{korisnik.ime}</td>
     <td><a href={`mailto:${korisnik.email}`}>{korisnik.email}</a></td>
-    <td>{korisnik.isAdmin ? (<i className="fas fa-check" style={{color:"green"}}></i>): (
-
-    <i className="fas fa-times" style={{color:'red'}}></i>
-    )}
-    </td>
+   
 
 
     <td>{korisnik.isKordinator ? (<i className="fas fa-check" style={{color:"green"}}></i>): (

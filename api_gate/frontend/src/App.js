@@ -22,7 +22,10 @@ import OceniScreen from './Screens/OceniScreen'
 import ForgetScreen from './Screens/ForgetPassScreen';
 import ResetPasswordScreen from './Screens/ResetPaswordScreen';
 import Objekti from './Screens/Objekti';
-
+import Sponzori from './Screens/Sponzori';
+import Kontakt from './Screens/Kontakt';
+import Kovid from './Screens/Kovid';
+import Poreklo from './Screens/Poreklo';
 const App =() => {
   return (
     <Router>
@@ -51,6 +54,11 @@ const App =() => {
       <Route path='/login/verify-email'  element={<VerifyScreen/>}/>
       <Route path='/' element={<Onama/>} exact/>
       <Route path='/admin/listakorisnika/page/:pageNumber' element={<ListaKorisnika/>} />
+      <Route path='/admin/listakorisnika/search/:keyword/:kordinator/' element={<ListaKorisnika/>} />
+      <Route path='/admin/listakorisnika/search2/:keyword'element={<ListaKorisnika/>} />
+      <Route path='/admin/listakorisnika/search/:kordinator/' element={<ListaKorisnika/>} />
+   
+      <Route path='/admin/listakorisnika/search/:keyword/page/:pageNumber' element={<ListaKorisnika/>} />
       <Route path='/search/:vrsta1' element={<Onama/>} exact/>
       <Route path='/search2/:vrsta1/:vrsta2' element={<Onama/>} exact/>
       <Route path='/searchmin/:minCena' element={<Onama/>} exact/>
@@ -75,6 +83,10 @@ const App =() => {
       <Route path='/kamp/prijave/:id/ocene' element={<OceniScreen/>}/>
       <Route path='/forgotPassword' element={<ForgetScreen></ForgetScreen>}></Route>
       <Route path='/login/reset-password' element={<ResetPasswordScreen></ResetPasswordScreen>} />
+      <Route path='/sponzori' element={<Sponzori/>}/>
+      <Route path='/kontakt' element={<Kontakt/>}/>
+      <Route path='/kovid' element={<Kovid/>}/>
+      <Route path='/poreklo' element={<Poreklo/>}/>
       
    </Routes>
     </main>

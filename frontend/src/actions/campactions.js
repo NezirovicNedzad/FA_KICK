@@ -117,7 +117,7 @@ export const CampCreate=() =>async(dispatch,getState)=>{
                 Authorization:`Bearer ${userInfo.token}`
             }
         }
-      const {data}=await axios.post(`/api/kampovi`,{},config)//passing a object,dont send data
+      const {data}=await axios.post(`/api/kampovi`,{},config)
         dispatch(
             {type:CAMP_CREATE_SUCCESS,
             payload:data}
